@@ -2,7 +2,7 @@
 //  D_E_M_TrustApp.swift
 //  D.E.M.Trust
 //
-//  Created by user217235 on 4/15/22.
+//  Created by Simbarashe Dombodzvuku on 4/15/22.
 //
 
 import SwiftUI
