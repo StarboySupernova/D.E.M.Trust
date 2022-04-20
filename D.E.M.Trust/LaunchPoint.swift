@@ -98,15 +98,15 @@ struct LiquidSwipe: Shape {
             let width = rect.width + (-offset.width > 0 ? offset.width : 0)
             //first, constructing a rectangle shape
             path.move(to: CGPoint(x: 0, y: 0))
-            path.addLine(to: CGPoint(x: showHome ? rect.width : rect.width + 3, y: 0))
-            path.addLine(to: CGPoint(x: showHome ? rect.width : rect.width + 3, y: rect.height))
+            path.addLine(to: CGPoint(x: rect.width, y: 0))
+            path.addLine(to: CGPoint(x: rect.width, y: rect.height))
             path.addLine(to: CGPoint(x: 0, y: rect.height))
             //constructing curve shape
             //from
-            let from = getRect().height * 0.06 + (offset.width) //for liquid effect
+            let from = getRect().height * 0.05 + (offset.width) //for liquid effect
             path.move(to: CGPoint(x: rect.width, y: from > 80 ? 80 : from))
             //to
-            var to = getRect().height * 0.15 + (offset.height) + (-offset.width) //also adding height
+            var to = getRect().height * 0.2 + (offset.height) + (-offset.width) //also adding height
             to = to < 180 ? 180 : to
             
             let mid: CGFloat = getRect().width * 0.1 + ((to - 180) / 2)
