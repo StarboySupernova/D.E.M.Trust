@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct D_E_M_TrustApp: App {
+    
+    //@Environment(\.scenePhase) private var phase
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LaunchPoint()
         }
     }
 }
