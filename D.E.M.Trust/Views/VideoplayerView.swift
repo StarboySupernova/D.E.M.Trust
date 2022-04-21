@@ -8,15 +8,15 @@
 import SwiftUI
 import AVKit
 
-struct ContentView: View {
+struct VideoPlayerView: View {
     var body: some View {
         Home()
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct VideoPlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        VideoPlayerView()
     }
 }
 
@@ -101,7 +101,7 @@ struct Home: View {
     }
 }
 
-class Host: UIHostingController<ContentView> {
+class Host: UIHostingController<VideoPlayerView> {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
