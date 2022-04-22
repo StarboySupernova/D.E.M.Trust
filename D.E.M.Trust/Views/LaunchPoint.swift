@@ -15,7 +15,9 @@ struct LaunchPoint: View {
     @State private var offset: CGSize = .zero
     @State private var showHome: Bool = false
     //Animation properties
-    @State var showView: Bool = false
+    @State private var scale: Bool = false
+    @State private var showBanner: Bool = false
+    @State private var showViews: [Bool] = Array(repeating: false, count: 5)
     
     var body: some View {
         Group {
@@ -38,6 +40,12 @@ struct LaunchPoint: View {
                                     .foregroundColor(.primary)
                                     .font(.callout)
                                     .fontWeight(.light)
+                                    .scaleEffect(scale ? 1 : 0.7)
+                                    .onAppear {
+                                        withAnimation(.easeOut.delay(0.1)) {
+                                            scale.toggle()
+                                        }
+                                    }
                                 Image(systemName: "chevron.left")
                                     .font(.largeTitle)
                                 //drag gesture identification
@@ -66,12 +74,10 @@ struct LaunchPoint: View {
                         )
                         .padding(.trailing, 30)
                     
-                    BannerView()
-                        .onAppear {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                                showView = true
-                            }
-                        }
+                    if showBanner {
+                        BannerView()
+                            .opacity(showHome ? 0 : 1)
+                    }
                     
                     if showHome {
                         Text("Welcome")
@@ -81,6 +87,13 @@ struct LaunchPoint: View {
                                     showHome.toggle()
                                 }
                             }
+                    }
+                }
+                .onAppear {
+                    withAnimation(.spring()) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                            showBanner = true
+                        }
                     }
                 }
             } else {
@@ -111,6 +124,15 @@ struct LaunchPoint: View {
                                 
                             )
                             .padding(.trailing, UIScreen.main.bounds.width * 0.1)
+                        
+                        if showBanner {
+                            VStack {
+                                Spacer()
+                                BannerView()
+                                    .opacity(showHome ? 0 : 1)
+                                    .padding(.trailing, 20)
+                            }
+                        }
                     } else {
                         if showHome {
                             Text("Welcome")
@@ -124,7 +146,13 @@ struct LaunchPoint: View {
                     }
                     
                 }
-                
+                .onAppear {
+                    withAnimation(.spring()) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                            showBanner = true
+                        }
+                    }
+                }
             }
         }
     }
@@ -142,7 +170,7 @@ struct BannerView: View {
         VStack(alignment: .center) {
             HStack(alignment: .bottom) {
                 Image("DEMTLogo")
-                    .resizedToFill(width: UIScreen.main.bounds.width * 0.45, height: UIScreen.main.bounds.height * 0.25)
+                    .resizedToFill(width: 200, height: 200)
                     .cornerRadius(10, corners: .allCorners)
                     .cornerRadius(30, corners: [.topLeft, .bottomRight])
                 

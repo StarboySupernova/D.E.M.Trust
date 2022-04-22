@@ -29,6 +29,7 @@
 		801AFDEF2810EA9F00AE3C53 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		801AFDF12810EE3200AE3C53 /* DarkModeViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeViewModifier.swift; sourceTree = "<group>"; };
 		801AFDF32811020500AE3C53 /* ExtensionOnImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionOnImage.swift; sourceTree = "<group>"; };
+		801AFDF52812587100AE3C53 /* D-E-M-Trust-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "D-E-M-Trust-Info.plist"; sourceTree = SOURCE_ROOT; };
 		80670D662808FB31007C135C /* D.E.M.Trust.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = D.E.M.Trust.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80670D692808FB31007C135C /* D_E_M_TrustApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D_E_M_TrustApp.swift; sourceTree = "<group>"; };
 		80670D6B2808FB31007C135C /* VideoplayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoplayerView.swift; sourceTree = "<group>"; };
@@ -86,6 +87,7 @@
 		80670D682808FB31007C135C /* D.E.M.Trust */ = {
 			isa = PBXGroup;
 			children = (
+				801AFDF52812587100AE3C53 /* D-E-M-Trust-Info.plist */,
 				80670D692808FB31007C135C /* D_E_M_TrustApp.swift */,
 				80E830EC280F8EC9008619C9 /* Modifiers */,
 				80E830EB280F8E95008619C9 /* Shapes */,
@@ -350,9 +352,10 @@
 				DEVELOPMENT_TEAM = ZD3ZX8KHC6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = "D-E-M-Trust-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -379,9 +382,10 @@
 				DEVELOPMENT_TEAM = ZD3ZX8KHC6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = "D-E-M-Trust-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
