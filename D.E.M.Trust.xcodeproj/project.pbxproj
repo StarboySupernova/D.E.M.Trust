@@ -10,6 +10,10 @@
 		801AFDF02810EA9F00AE3C53 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801AFDEF2810EA9F00AE3C53 /* Background.swift */; };
 		801AFDF22810EE3200AE3C53 /* DarkModeViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801AFDF12810EE3200AE3C53 /* DarkModeViewModifier.swift */; };
 		801AFDF42811020500AE3C53 /* ExtensionOnImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801AFDF32811020500AE3C53 /* ExtensionOnImage.swift */; };
+		801AFDF7281378AA00AE3C53 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801AFDF6281378AA00AE3C53 /* GalleryView.swift */; };
+		801AFDF928137A4400AE3C53 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801AFDF828137A4400AE3C53 /* Post.swift */; };
+		801AFDFC28137AB400AE3C53 /* StaggeredGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801AFDFB28137AB400AE3C53 /* StaggeredGrid.swift */; };
+		801AFDFE2813900F00AE3C53 /* DummyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801AFDFD2813900F00AE3C53 /* DummyView.swift */; };
 		80670D6A2808FB31007C135C /* D_E_M_TrustApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80670D692808FB31007C135C /* D_E_M_TrustApp.swift */; };
 		80670D6C2808FB31007C135C /* VideoplayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80670D6B2808FB31007C135C /* VideoplayerView.swift */; };
 		80670D6E2808FB32007C135C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80670D6D2808FB32007C135C /* Assets.xcassets */; };
@@ -30,6 +34,10 @@
 		801AFDF12810EE3200AE3C53 /* DarkModeViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeViewModifier.swift; sourceTree = "<group>"; };
 		801AFDF32811020500AE3C53 /* ExtensionOnImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionOnImage.swift; sourceTree = "<group>"; };
 		801AFDF52812587100AE3C53 /* D-E-M-Trust-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "D-E-M-Trust-Info.plist"; sourceTree = SOURCE_ROOT; };
+		801AFDF6281378AA00AE3C53 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
+		801AFDF828137A4400AE3C53 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		801AFDFB28137AB400AE3C53 /* StaggeredGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaggeredGrid.swift; sourceTree = "<group>"; };
+		801AFDFD2813900F00AE3C53 /* DummyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyView.swift; sourceTree = "<group>"; };
 		80670D662808FB31007C135C /* D.E.M.Trust.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = D.E.M.Trust.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80670D692808FB31007C135C /* D_E_M_TrustApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D_E_M_TrustApp.swift; sourceTree = "<group>"; };
 		80670D6B2808FB31007C135C /* VideoplayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoplayerView.swift; sourceTree = "<group>"; };
@@ -63,8 +71,27 @@
 				80670D6B2808FB31007C135C /* VideoplayerView.swift */,
 				80E830DB280F6392008619C9 /* LaunchPoint.swift */,
 				801AFDEF2810EA9F00AE3C53 /* Background.swift */,
+				801AFDF6281378AA00AE3C53 /* GalleryView.swift */,
+				801AFDFB28137AB400AE3C53 /* StaggeredGrid.swift */,
+				801AFDFF2813903600AE3C53 /* Dummy */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		801AFDFA28137A7A00AE3C53 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				801AFDF828137A4400AE3C53 /* Post.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		801AFDFF2813903600AE3C53 /* Dummy */ = {
+			isa = PBXGroup;
+			children = (
+				801AFDFD2813900F00AE3C53 /* DummyView.swift */,
+			);
+			path = Dummy;
 			sourceTree = "<group>";
 		};
 		80670D5D2808FB31007C135C = {
@@ -89,6 +116,7 @@
 			children = (
 				801AFDF52812587100AE3C53 /* D-E-M-Trust-Info.plist */,
 				80670D692808FB31007C135C /* D_E_M_TrustApp.swift */,
+				801AFDFA28137A7A00AE3C53 /* Model */,
 				80E830EC280F8EC9008619C9 /* Modifiers */,
 				80E830EB280F8E95008619C9 /* Shapes */,
 				801AFDEE2810E94700AE3C53 /* Views */,
@@ -215,12 +243,16 @@
 				80670D6C2808FB31007C135C /* VideoplayerView.swift in Sources */,
 				80E830E0280F8698008619C9 /* ExtensionOnLinearGradient.swift in Sources */,
 				801AFDF22810EE3200AE3C53 /* DarkModeViewModifier.swift in Sources */,
+				801AFDFE2813900F00AE3C53 /* DummyView.swift in Sources */,
 				80670D6A2808FB31007C135C /* D_E_M_TrustApp.swift in Sources */,
 				80E830E6280F88A3008619C9 /* OffsetModifier.swift in Sources */,
+				801AFDF928137A4400AE3C53 /* Post.swift in Sources */,
+				801AFDFC28137AB400AE3C53 /* StaggeredGrid.swift in Sources */,
 				80E830DE280F85DA008619C9 /* ExtensionOnColor.swift in Sources */,
 				801AFDF42811020500AE3C53 /* ExtensionOnImage.swift in Sources */,
 				80E830E4280F87E1008619C9 /* RoundedCorner.swift in Sources */,
 				80E830E8280F893F008619C9 /* ExtensionOnString.swift in Sources */,
+				801AFDF7281378AA00AE3C53 /* GalleryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
