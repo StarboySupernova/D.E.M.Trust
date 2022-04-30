@@ -44,10 +44,10 @@ struct SideMenu: View {
             //tab buttons
             VStack(alignment: .leading, spacing: 10) {
                 TabButton(image: "house", title: "Home", selectedTab: $selectedTab, animation: animation)
-                TabButton(image: "music.note.list", title: "My Playlists", selectedTab: $selectedTab, animation: animation)
-                TabButton(image: "clock", title: "History", selectedTab: $selectedTab, animation: animation)
-                TabButton(image: "gear", title: "Settings", selectedTab: $selectedTab, animation: animation)
-                TabButton(image: "questionmark.circle", title: "Help", selectedTab: $selectedTab, animation: animation)
+                TabButton(image: "globe.europe.africa.fill", title: "Operations", selectedTab: $selectedTab, animation: animation)
+                TabButton(image: "brain.head.profile", title: "Training", selectedTab: $selectedTab, animation: animation)
+                TabButton(image: "play.tv.fill", title: "Documentaries", selectedTab: $selectedTab, animation: animation)
+                TabButton(image: "person.3.fill", title: "About Us", selectedTab: $selectedTab, animation: animation)
                 
             }
             .padding(.leading, -15)
@@ -77,5 +77,6 @@ struct SideMenu: View {
 struct SideMenu_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
+            .environmentObject(ModelData())
     }
 }

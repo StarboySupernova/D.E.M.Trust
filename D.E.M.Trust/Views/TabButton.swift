@@ -28,7 +28,7 @@ struct TabButton: View {
                 Text(title)
                     .fontWeight(.semibold)
             }
-            .foregroundColor(selectedTab == title ? Color.BG : .white)
+            .foregroundColor(selectedTab == title ? Color.black : .white)
             .padding(.vertical, 12)
             .padding(.horizontal, 10)
             //max available frame
@@ -51,5 +51,6 @@ struct TabButton: View {
 struct TabButton_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
+            .environmentObject(ModelData())
     }
 }

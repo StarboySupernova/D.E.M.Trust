@@ -14,7 +14,7 @@ struct MainView: View {
     
     var body: some View {
         ZStack(alignment: .leading) {
-            LinearGradient(mycolors: Color.darkStart, Color.BG)
+            LinearGradient(mycolors: Color.darkStart,Color.darkEnd)
                 .ignoresSafeArea()
             
             //Side Menu
@@ -22,6 +22,7 @@ struct MainView: View {
                 SideMenu(selectedTab: $selectedTab)
             }
             .frame(maxWidth: getRect().width * 0.7)
+            
             
             ZStack {
                 //2 background cards
@@ -71,7 +72,7 @@ struct MainView: View {
                                 .frame(width: 30, height: 3)
                                 .offset(y: showMenu ? -8 : 0)
                         }
-                        .rotationEffect(.init(degrees: showMenu ? 50 : 0))
+                        .rotationEffect(.init(degrees: showMenu ? 50 : 1))
                     }
                 }
                     .padding() //useful to learn to detect which phones have a notch here
@@ -85,5 +86,6 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
+            .environmentObject(ModelData())
     }
 }

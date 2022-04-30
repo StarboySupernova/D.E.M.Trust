@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 final class ModelData: ObservableObject {
-    @Published var podcasts: [Card] = load("projectData.json")
+    @Published var projects: [Card] = load("projectData.json")
 }
 
 func load<T: Decodable>(_ filename: String) -> T {

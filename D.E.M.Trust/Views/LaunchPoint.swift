@@ -26,7 +26,9 @@ struct LaunchPoint: View {
             if verticalSizeClass == .regular && horizontalSizeClass == .compact {
                 if showMenu {
                     MainView()
-                } else {
+                }
+                
+                if showMenu == false {
                     ZStack {
                         Background()
                             .cornerRadius(15, corners: .topRight)

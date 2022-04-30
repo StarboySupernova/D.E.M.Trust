@@ -33,7 +33,7 @@ struct Home: View {
                         
                         Text("Today")
                             .font(.largeTitle)
-                            .bold()
+                            .fontWeight(.ultraLight)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     
@@ -42,7 +42,7 @@ struct Home: View {
                     } label: {
                         Image(systemName: "person.circle.fill")
                             .font(.largeTitle)
-                            .foregroundColor(Color.BG)
+                            .foregroundColor(Color.topBG)
                     }
 
                     
@@ -51,7 +51,7 @@ struct Home: View {
                 .padding(.bottom)
                 .opacity(showDetailPage ? 0 : 1)
                 
-                ForEach(modelData.podcasts) { item in
+                ForEach(modelData.projects) { item in
                     Button {
                         withAnimation(.interactiveSpring(response: 0.6, dampingFraction: 0.7, blendDuration: 0.7)) {
                             currentItem = item
@@ -77,7 +77,7 @@ struct Home: View {
         }
         .background(alignment: .top) {
             RoundedRectangle(cornerRadius: 15, style: .continuous)
-                .fill(Color.darkStart)
+                .fill(LinearGradient(mycolors: Color.darkEnd, Color.darkStart, Color.darkEnd))
                 .frame(height: animateView ? nil : 350, alignment: .top)
                 .opacity(animateView ? 1 : 0)
                 .ignoresSafeArea()
@@ -112,7 +112,7 @@ struct Home: View {
                     Text(item.name)
                         .font(.largeTitle)
                         .bold()
-                        .multilineTextAlignment(.leading)
+                        .multilineTextAlignment(.trailing)
                 }
                 .foregroundColor(.primary)
                 .padding()
@@ -144,11 +144,11 @@ struct Home: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Button {
-                    
+                    //preliminary idea - go to videoplayer
                 } label: {
-                    Text("GET")
+                    Text("More")
                         .fontWeight(.bold)
-                        .foregroundColor(.green)
+                        .foregroundColor(.customOrange)
                         .padding(.vertical, 8)
                         .padding(.horizontal, 20)
                         .background {
@@ -162,7 +162,7 @@ struct Home: View {
         }
         .background {
             RoundedRectangle(cornerRadius: 15, style: .continuous)
-                .fill(Color.BG.opacity(0.8))
+                .fill(Color("gradient-top"))
         }
         .matchedGeometryEffect(id: item.id, in: animation)
     }
@@ -205,7 +205,7 @@ struct Home: View {
                         .padding(.horizontal, 25)
                         .background {
                             RoundedRectangle(cornerRadius: 5, style: .continuous)
-                                .fill(Color.BG.opacity(0.8))
+                                .fill(Color.bottomBG)
                         }
                     }
 
@@ -264,6 +264,7 @@ struct Home_Previews: PreviewProvider {
     static var previews: some View {
         Home()
             .preferredColorScheme(.dark)
+            .environmentObject(ModelData())
     }
 }
 
