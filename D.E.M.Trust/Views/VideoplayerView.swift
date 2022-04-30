@@ -9,24 +9,12 @@ import SwiftUI
 import AVKit
 
 struct VideoPlayerView: View {
-    var body: some View {
-        Home()
-    }
-}
-
-struct VideoPlayerView_Previews: PreviewProvider {
-    static var previews: some View {
-        VideoPlayerView()
-    }
-}
-
-struct Home: View {
     
     @State private var index = 0
     @State private var data : [Video] = [
         Video(id: 0, player: AVPlayer(url: URL(fileURLWithPath: Bundle.main.path(forResource: "DEMT&Resilience40", ofType: "mp4") ?? "not found")), replay: false),
         //should use web url for this
-    ]
+        ]
     
     var body: some View {
         ZStack {
@@ -101,6 +89,12 @@ struct Home: View {
     }
 }
 
+struct VideoPlayerView_Previews: PreviewProvider {
+    static var previews: some View {
+        VideoPlayerView()
+    }
+}
+
 class Host: UIHostingController<VideoPlayerView> {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -150,7 +144,7 @@ struct PlayerView: View {
                                 .resizable()
                                 .frame(width: 55, height: 60)
                         }
-
+                        
                     }
                 }
             }
