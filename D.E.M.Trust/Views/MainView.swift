@@ -18,11 +18,12 @@ struct MainView: View {
                 .ignoresSafeArea()
             
             //Side Menu
-            ScrollView(getRect().height < 750 ? .vertical : .init(), showsIndicators: false) {
-                SideMenu(selectedTab: $selectedTab)
+            if showMenu {
+                ScrollView(getRect().height < 750 ? .vertical : .init(), showsIndicators: false) {
+                    SideMenu(selectedTab: $selectedTab)
+                }
+                .frame(maxWidth: getRect().width * 0.7)
             }
-            .frame(maxWidth: getRect().width * 0.7)
-            
             
             ZStack {
                 //2 background cards
@@ -72,7 +73,7 @@ struct MainView: View {
                                 .frame(width: 30, height: 3)
                                 .offset(y: showMenu ? -8 : 0)
                         }
-                        .rotationEffect(.init(degrees: showMenu ? 50 : 1))
+                        .rotationEffect(.init(degrees: showMenu ? 49.9 : 0.9))
                     }
                 }
                     .padding() //useful to learn to detect which phones have a notch here

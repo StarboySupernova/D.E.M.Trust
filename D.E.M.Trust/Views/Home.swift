@@ -26,10 +26,10 @@ struct Home: View {
             VStack(spacing: 0) {
                 HStack(alignment: .bottom) {
                     VStack(alignment: .leading, spacing: 8) {
-                            Text(todaysDate())
-                                .font(.callout)
-                                .foregroundColor(.orange)
-                                .padding(.top, 30)
+                        Text(todaysDate())
+                            .font(.callout)
+                            .foregroundColor(.orange)
+                            .padding(.top, 30)
                         
                         Text("Today")
                             .font(.largeTitle)
@@ -44,7 +44,7 @@ struct Home: View {
                             .font(.largeTitle)
                             .foregroundColor(Color.topBG)
                     }
-
+                    
                     
                 }
                 .padding(.horizontal)
@@ -52,19 +52,21 @@ struct Home: View {
                 .opacity(showDetailPage ? 0 : 1)
                 
                 ForEach(modelData.projects) { item in
-                    Button {
-                        withAnimation(.interactiveSpring(response: 0.6, dampingFraction: 0.7, blendDuration: 0.7)) {
-                            currentItem = item
-                            showDetailPage = true
+                    if showDetailPage == false {
+                        Button {
+                            withAnimation(.interactiveSpring(response: 0.6, dampingFraction: 0.7, blendDuration: 0.7)) {
+                                currentItem = item
+                                showDetailPage = true
+                            }
+                        } label: {
+                            CardView(item: item)
+                            //applied scale effect and not padding for matched geometry
+                            //Used approximate value to mimic the padding
+                                .scaleEffect(currentItem?.id == item.id && showDetailPage ? 1 : 0.93)
                         }
-                    } label: {
-                        CardView(item: item)
-                        //applied scale effect and not padding for matched geometry
-                        //Used approximate value to mimic the padding
-                            .scaleEffect(currentItem?.id == item.id && showDetailPage ? 1 : 0.93)
+                        .buttonStyle(ScaledButtonStyle())
+                        .opacity(showDetailPage ? (currentItem?.id == item.id ? 1 : 0) : 1)
                     }
-                    .buttonStyle(ScaledButtonStyle())
-                    .opacity(showDetailPage ? (currentItem?.id == item.id ? 1 : 0) : 1)
                 }
             }
             .padding(.vertical)
@@ -156,7 +158,7 @@ struct Home: View {
                                 .fill(.ultraThinMaterial)
                         }
                 }
-
+                
             }
             .padding([.horizontal, .bottom])
         }
@@ -208,7 +210,7 @@ struct Home: View {
                                 .fill(Color.bottomBG)
                         }
                     }
-
+                    
                 }
                 .padding()
                 .offset(y: scrollOffset > 0 ? scrollOffset : 0)
@@ -248,7 +250,7 @@ struct Home: View {
             withAnimation(.interactiveSpring(response: 0.6, dampingFraction: 0.7, blendDuration: 0.7).delay(0.1)) {
                 animateContent = true
             }
-
+            
         }
         .transition(.identity)
     }
