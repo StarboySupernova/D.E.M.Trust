@@ -22,6 +22,10 @@ struct LandingView: View {
             //Views
             Home()
                 .tag("Home")
+            TrainingView()
+                .tag("Training")
+            GalleryView()
+                .tag("Gallery")
             // PlaylistView()
             //   .tag("My Playlists")
             // HistoryWrappingView()

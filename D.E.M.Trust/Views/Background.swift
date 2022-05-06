@@ -10,7 +10,7 @@ import SwiftUI
 struct Background: View {
     var body: some View {
         ZStack {
-            LinearGradient(mycolors: Color.darkStart, Color.darkEnd)
+            LinearGradient(mycolors: Color.darkStart, Color.darkEnd, Color.black)
 
             VStack {
                 Circle()

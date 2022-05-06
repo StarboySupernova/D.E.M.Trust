@@ -61,7 +61,7 @@ struct MainView: View {
                         Capsule()
                             .fill(showMenu ? Color.white : Color.primary)
                             .frame(width: 30, height: 3)
-                            .rotationEffect(.init(degrees: showMenu ? -50 : 0))
+                            .rotationEffect(.init(degrees: showMenu ? -49.9 : 0.01))
                             .offset(x: showMenu ? 2 : 0, y: showMenu ? 9 : 0)
                         VStack(spacing: 5) {
                             Capsule()

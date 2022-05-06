@@ -32,7 +32,7 @@ struct SideMenu: View {
                     .multilineTextAlignment(.leading)
                 
                 Button {
-                    //use LandingView to present profile page to be created
+                    //use LandingView to present profile page to be created. UserDefaults to store user info
                 } label: {
                     Text("View Profile")
                         .fontWeight(.semibold)
@@ -47,6 +47,7 @@ struct SideMenu: View {
                 TabButton(image: "globe.europe.africa.fill", title: "Operations", selectedTab: $selectedTab, animation: animation)
                 TabButton(image: "brain.head.profile", title: "Training", selectedTab: $selectedTab, animation: animation)
                 TabButton(image: "play.tv.fill", title: "Documentaries", selectedTab: $selectedTab, animation: animation)
+                TabButton(image: "camera.viewfinder", title: "Gallery", selectedTab: $selectedTab, animation: animation)
                 TabButton(image: "person.3.fill", title: "About Us", selectedTab: $selectedTab, animation: animation)
                 
             }

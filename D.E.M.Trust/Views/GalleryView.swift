@@ -42,7 +42,7 @@ struct GalleryView: View {
                         Button {
                             
                         } label: {
-                            Text("Continue")
+                            //Text("Continue")
                         }
                     }
             }
