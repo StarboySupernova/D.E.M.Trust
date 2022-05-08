@@ -16,25 +16,29 @@ struct ExamQuestionView: View {
             if !show {
                 VStack(alignment: .leading, spacing: 20) {
                     //to be shared across the start and the end of the animation
-                    Text("Swift")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .matchedGeometryEffect(id: "title", in: animation) //nb: integrity before modifier
-                        .frame(maxWidth: .infinity, alignment: .leading) //positioning after modifier
-                    
-                    Text("20 sections - 3 hours".uppercased())
-                        .font(.footnote)
-                        .fontWeight(.semibold)
-                        .matchedGeometryEffect(id: "subtitle", in: animation)
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("Swift")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .matchedGeometryEffect(id: "title", in: animation) //nb: integrity before modifier
+                            .frame(maxWidth: .infinity, alignment: .leading) //positioning after modifier
+                        
+                        Text("20 sections - 3 hours".uppercased())
+                            .font(.footnote)
+                            .fontWeight(.semibold)
+                            .matchedGeometryEffect(id: "subtitle", in: animation)
+                    }
+                    .matchedGeometryEffect(id: "blur", in: animation)
+                    .padding(20)
                     
                     Text("Exam Question")
                         .font(.footnote)
                         .matchedGeometryEffect(id: "question", in: animation)
                 }
-                .padding(20)
+                .padding()
                 .foregroundStyle(.white)
                 .background(
-                    Color.blue
+                    Color.darkStart
                         .matchedGeometryEffect(id: "background", in: animation)
                 )
                 .mask({
@@ -47,7 +51,7 @@ struct ExamQuestionView: View {
                 
             } else {
                 ScrollView {
-                    VStack(alignment: .leading, spacing: 20) {
+                    VStack {
                         ScrollView {
                             Text("Exam Question")
                                 .multilineTextAlignment(.center)
@@ -55,7 +59,21 @@ struct ExamQuestionView: View {
                                 .matchedGeometryEffect(id: "question", in: animation)
                         }
                         Spacer()
-                        VStack {
+                    }
+                    .frame(maxWidth: .infinity)
+                    .frame(height: getRect().height * 0.8)
+                    .padding(20)
+                    .foregroundStyle(.black)
+                    .background(
+                        Color.topBG
+                            .matchedGeometryEffect(id: "background", in: animation)
+                    )
+                    .mask({
+                        RoundedRectangle(cornerRadius: 15, style: .continuous)
+                            .matchedGeometryEffect(id: "mask", in: animation)
+                    })
+                    .overlay(
+                        VStack(alignment: .leading, spacing: 12) {
                             Text("20 sections - 3 hours".uppercased())
                                 .font(.footnote)
                                 .fontWeight(.semibold)
@@ -66,31 +84,35 @@ struct ExamQuestionView: View {
                                 .fontWeight(.bold)
                                 .matchedGeometryEffect(id: "title", in: animation)
                                 .frame(maxWidth: .infinity, alignment: .leading)
+                            Divider()
+                            HStack {
+                                Image("DEMTLogo")
+                                    .resizable()
+                                    .frame(width: 30, height: 30)
+                                    .aspectRatio(contentMode: .fit)
+                                    .clipShape(Circle())
+                                
+                                VStack {
+                                    Text("D.E.M.T.")
+                                        .font(.footnote)
+                                    Text("Making a difference")
+                                        .font(.caption2)
+                                }
+                            }
                         }
-                        .padding()
+                        .padding(20)
                         .background(
                             ZStack {
                                 Rectangle()
                                     .fill(.ultraThinMaterial)
                                     .mask(RoundedRectangle(cornerRadius: 10, style: .continuous))
-                                Image("DEMTLogo")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .clipShape(Circle())
+                                    .blur(radius: 20)
                             }
+                            .matchedGeometryEffect(id: "blur", in: animation)
                         )
-                    }
-                    .frame(height: getRect().height * 0.8)
-                    .padding(20)
-                    .foregroundStyle(.black)
-                    .background(
-                        Color.red
-                            .matchedGeometryEffect(id: "background", in: animation)
+                        .offset(y: getRect().height * 0.3)
+                        .padding(20)
                     )
-                    .mask({
-                        RoundedRectangle(cornerRadius: 15, style: .continuous)
-                            .matchedGeometryEffect(id: "mask", in: animation)
-                    })
                 }
             }
         }

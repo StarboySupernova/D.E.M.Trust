@@ -17,7 +17,7 @@ struct D_E_M_TrustApp: App {
             /*LaunchPoint()
                 .modifier(DarkModeViewModifier())
                 .environmentObject(modelData)*/
-            ExamQuestionView()
+            OperationsView()
         }
     }
 }

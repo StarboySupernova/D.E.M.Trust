@@ -177,11 +177,15 @@ struct OperationsDetailView :  View {
                     }
                     .padding()
                 }
-                .frame(maxWidth: .infinity)
+                .frame(maxWidth: getRect().width)
                 .background(
-                    Color.darkStart
-                        .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                    ZStack {
+                        Color.darkStart
+                            .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
                         .ignoresSafeArea()
+                        
+                        MapView()
+                    }
                 )
                 .offset(y: showView ? 0 : height)
             }
