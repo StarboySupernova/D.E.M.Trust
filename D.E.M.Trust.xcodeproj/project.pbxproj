@@ -15,6 +15,7 @@
 		801AFDF928137A4400AE3C53 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801AFDF828137A4400AE3C53 /* Post.swift */; };
 		801AFDFC28137AB400AE3C53 /* StaggeredGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801AFDFB28137AB400AE3C53 /* StaggeredGrid.swift */; };
 		801EA1ED28275C87004E5DE4 /* LabelledDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801EA1EC28275C87004E5DE4 /* LabelledDivider.swift */; };
+		801EA1F028277B84004E5DE4 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801EA1EF28277B84004E5DE4 /* Place.swift */; };
 		803514BD2814CDE300535248 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803514BC2814CDE300535248 /* Home.swift */; };
 		803514BF28175D7900535248 /* projectData.json in Resources */ = {isa = PBXBuildFile; fileRef = 803514BE28175D7900535248 /* projectData.json */; };
 		80355FAB281A14F700B13A25 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80355FAA281A14F700B13A25 /* Card.swift */; };
@@ -53,6 +54,7 @@
 		801AFDF828137A4400AE3C53 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		801AFDFB28137AB400AE3C53 /* StaggeredGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaggeredGrid.swift; sourceTree = "<group>"; };
 		801EA1EC28275C87004E5DE4 /* LabelledDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelledDivider.swift; sourceTree = "<group>"; };
+		801EA1EF28277B84004E5DE4 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		803514BC2814CDE300535248 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		803514BE28175D7900535248 /* projectData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = projectData.json; sourceTree = "<group>"; };
 		80355FAA281A14F700B13A25 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				80355FAA281A14F700B13A25 /* Card.swift */,
 				80355FAC281A232200B13A25 /* ModelData.swift */,
 				80A2D09628220A1000B33872 /* OperationCard.swift */,
+				801EA1EF28277B84004E5DE4 /* Place.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				8082BD142813A6C60093FB1D /* SideMenu.swift in Sources */,
 				80E830E0280F8698008619C9 /* ExtensionOnLinearGradient.swift in Sources */,
 				80A2D0992822113800B33872 /* OperationsView.swift in Sources */,
+				801EA1F028277B84004E5DE4 /* Place.swift in Sources */,
 				801AFDF22810EE3200AE3C53 /* DarkModeViewModifier.swift in Sources */,
 				80670D6A2808FB31007C135C /* D_E_M_TrustApp.swift in Sources */,
 				80E830E6280F88A3008619C9 /* OffsetModifier.swift in Sources */,
