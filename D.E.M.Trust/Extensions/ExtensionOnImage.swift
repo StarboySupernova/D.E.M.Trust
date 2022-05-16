@@ -21,7 +21,18 @@ extension Image {
             .frame(width: width, height: height)
     }
     
-    /// Resize an image with fill aspect ratio and specified frame dimensions.
+    /// Resize an image with fit aspect ratio and specified frame dimensions.
+    ///   - parameters:
+    ///     - width: Frame width.
+    ///     - height: Frame height.
+    func resizedToFit(width: CGFloat, height: CGFloat) -> some View {
+        self
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: width, height: height)
+    }
+    
+    /// Resize an image with fill aspect ratio, customizable aspect ratio value and specified frame dimensions.
     ///   - parameters:
     ///     - width: Frame width.
     ///     - height: Frame height.
@@ -33,7 +44,7 @@ extension Image {
             .frame(width: width, height: height)
     }
     
-    /// Resize an image with fit aspect ratio and specified frame dimensions.
+    /// Resize an image with fit aspect ratio, customizable aspect ratio value and specified frame dimensions.
     ///   - parameters:
     ///     - width: Frame width.
     ///     - height: Frame height.

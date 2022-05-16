@@ -10,14 +10,14 @@ import SwiftUI
 //Custom view builder
 // T is to hold the identifiable collection of data
 struct StaggeredGrid<Content: View, T: Identifiable>: View where T: Hashable {
-
+    
     //will return each item in the collection to build view
     var content : (T) -> Content
     var list : [T]
-
+    
     //columns
     var columns: Int
-
+    
     //properties
     var showIndicators: Bool = false
     var spacing: CGFloat
@@ -34,10 +34,10 @@ struct StaggeredGrid<Content: View, T: Identifiable>: View where T: Hashable {
     func setUpList() -> [[T]] {
         //creating empty subarrays of columns count
         var gridArray: [[T]] = Array(repeating: [], count: columns)
-
+        
         //splitting array for VStack oriented view
         var currentIndex: Int = 0
-
+        
         for object in list {
             gridArray[currentIndex].append(object)
             //incrementing index count and resetting if value goes above columns count
@@ -47,24 +47,24 @@ struct StaggeredGrid<Content: View, T: Identifiable>: View where T: Hashable {
                 currentIndex += 1
             }
         }
-
+        
         return gridArray
     }
-
+    
     var body: some View {
         ScrollView(.vertical, showsIndicators: showIndicators) {
-             HStack(alignment: .top) {
-               ForEach(setUpList(), id: \.self) { columnsData in
-                   LazyVStack(spacing: spacing) {
+            HStack(alignment: .top) {
+                ForEach(setUpList(), id: \.self.id) { columnsData in
+                    LazyVStack(spacing: spacing) {
                         ForEach(columnsData) { object in
                             content(object)
                         }
-                   }
-               }
+                    }
+                }
             }
             .padding(.vertical)
         }
-       
+        
     }
 }
 

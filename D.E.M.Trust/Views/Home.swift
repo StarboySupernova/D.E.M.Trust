@@ -71,6 +71,12 @@ struct Home: View {
             }
             .padding(.vertical)
         }
+        .background(
+            Rectangle()
+                .fill(.ultraThinMaterial)
+                .cornerRadius(55, corners: .topRight)
+                .opacity(0.3)
+        )
         .overlay {
             if let currentItem = currentItem, showDetailPage {
                 DetailsView(item: currentItem)

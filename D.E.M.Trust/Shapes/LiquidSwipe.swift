@@ -21,6 +21,7 @@ struct LiquidSwipe: Shape {
             offset.animatableData = newValue
         }
     }
+    
     func path(in rect: CGRect) -> Path {
         return Path { path in
             let width = rect.width + (-offset.width > 0 ? offset.width : 0)
