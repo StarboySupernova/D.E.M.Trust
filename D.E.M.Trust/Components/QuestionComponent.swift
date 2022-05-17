@@ -36,8 +36,13 @@ struct QuestionComponent: View {
         .padding()
         .foregroundStyle(.white)
         .background(
-            Color.darkStart
-                .matchedGeometryEffect(id: "background", in: animation)
+            ZStack {
+                Image("moonlight")
+                    .resizable()
+                    .clipShape(Circle())
+                Color.topBG.opacity(0.1)
+                    .matchedGeometryEffect(id: "background", in: animation)
+            }
         )
         .mask({
             Rectangle()
@@ -54,5 +59,6 @@ struct QuestionComponent_Previews: PreviewProvider {
     
     static var previews: some View {
         QuestionComponent(animation: animation, show: .constant(true))
+            .preferredColorScheme(.dark)
     }
 }

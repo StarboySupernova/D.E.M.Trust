@@ -15,7 +15,7 @@ struct TrainingView: View {
     @Namespace private var animation
     @State private var show: Bool = false
     
-    let gradient = Gradient(stops: [Gradient.Stop(color: .white, location: 0.1), Gradient.Stop(color: .bottomBG, location: 0.8)])
+    let gradient = Gradient(stops: [Gradient.Stop(color: .white, location: 0.1), Gradient.Stop(color: Color("theme"), location: 0.8)])
     
     /*
      let backgroundGradient = Gradient(colors: [.darkStart, .bottomBG])
@@ -24,7 +24,7 @@ struct TrainingView: View {
     
     var body: some View {
         ZStack {
-            LinearGradient(colors: [.topBG.opacity(0.7), .bottomBG.opacity(0.7)], startPoint: .topLeading, endPoint: .bottomTrailing)
+            LinearGradient(colors: [.darkStart, .black, .darkEnd], startPoint: .topLeading, endPoint: .bottomTrailing)
                 .hueRotation(.degrees(animateGradient ? 45 : 0))
                 .ignoresSafeArea()
                 .onAppear {
@@ -32,6 +32,7 @@ struct TrainingView: View {
                         animateGradient.toggle()
                     }
                 }
+            
             GeometryReader { geometry in
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 5) {
@@ -52,13 +53,14 @@ struct TrainingView: View {
                                         }
                                     } label: {
                                         Image(systemName: "chevron.right")
-                                            .resizedToFit(width: 35, height: 30)
+                                            .font(.title3)
                                             .foregroundColor(.white)
+                                            //.resizedToFit(width: 35, height: 30)
                                             .padding(10)
                                             .background(
                                                 Ellipse()
                                                     .stroke(.white, style: StrokeStyle())
-                                                    .background(Ellipse().fill(.orange))
+                                                    .background(Ellipse().fill(.green))
                                             )
                                     }
                                     .opacity(scrollToEnd ? 0 : 1)
@@ -79,7 +81,7 @@ struct TrainingView: View {
                                     .padding()
                                     .background(
                                         RoundedRectangle(cornerRadius: 15, style: .circular)
-                                            .fill(Color.bottomBG)
+                                            .fill(Color("theme"))
                                             .padding()
                                             .padding(.bottom, 20)
                                     )
@@ -120,7 +122,6 @@ struct TrainingView: View {
     @ViewBuilder
     func tile(title: String, _ imageName: String = "people") -> some View {
         ZStack (alignment: .top) {
-            Color.bottomBG
             Image(imageName)
                 .resizable()
                 .frame(width: 150, height: 200)
