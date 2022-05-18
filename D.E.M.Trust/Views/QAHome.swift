@@ -11,7 +11,7 @@ struct QAHome: View {
     //might make into viewbuilder function
     @State private var show: Bool = false
     //storing level for fetching questions
-    @State private var set = "Round_1"
+    @State private var set = "Exam_1"
     
     @State private var correct = 0
     @State private var incorrect = 0
@@ -67,7 +67,7 @@ struct QAHome: View {
                 .ignoresSafeArea()
         )
         .sheet(isPresented: $show) {
-            QAView(correctAnswers: $correct, incorrectAnswers: $incorrect)
+            QAView(correctAnswers: $correct, incorrectAnswers: $incorrect, attempted: $attempted, set: set)
         }
     }
 }
