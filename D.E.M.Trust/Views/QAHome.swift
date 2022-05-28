@@ -52,7 +52,7 @@ struct QAHome: View {
                     .background(Color.white)
                     .cornerRadius(15)
                     .onTapGesture {
-                        set = "Round\(index)"
+                        set = "Exam_\(index)"
                         show.toggle()
                     }
                 }
@@ -67,7 +67,7 @@ struct QAHome: View {
                 .ignoresSafeArea()
         )
         .sheet(isPresented: $show) {
-            QAView(correctAnswers: $correct, incorrectAnswers: $incorrect, attempted: $attempted, set: set)
+            QAView(correctAnswers: $correct, incorrectAnswers: $incorrect, attempted: $attempted, set: set, show: $show)
         }
     }
 }

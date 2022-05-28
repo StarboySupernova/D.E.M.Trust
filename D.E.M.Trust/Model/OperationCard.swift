@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OperationCard: Identifiable {
+struct OperationCard: Identifiable, Equatable {
     var id = UUID().uuidString
     var name: String
     var locationNumber: String

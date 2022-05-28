@@ -9,7 +9,7 @@ import SwiftUI
 import AVKit
 
 struct VideoPlayerView: View {
-    
+    @Binding var fullscreen : Bool
     @State private var index = 0
     @State private var data : [Video] = [
         Video(id: 0, player: AVPlayer(url: URL(fileURLWithPath: Bundle.main.path(forResource: "DEMT&Resilience40", ofType: "mp4") ?? "not found")), replay: false),
@@ -52,32 +52,6 @@ struct VideoPlayerView: View {
                     .padding(.bottom, 55)
                     .padding(.trailing)
                 }
-                
-                HStack {
-                    Button {
-                        self.index = 0
-                    } label: {
-                        Image("homeicon")
-                            .renderingMode(.template)
-                            .resizable()
-                            .frame(width: 25, height: 25)
-                            .foregroundColor(self.index == 0 ? .white : .white.opacity(0.35))
-                    }
-                    
-                    Spacer(minLength: 0)
-                    
-                    Button {
-                        self.index = 3
-                    } label: {
-                        Image("usericon")
-                            .renderingMode(.template)
-                            .resizable()
-                            .frame(width: 25, height: 25)
-                            .foregroundColor(self.index == 3 ? .white : .white.opacity(0.35))
-                    }
-                    
-                }
-                .padding(.horizontal)
             }
             .padding(.top, safeArea().top)
             .padding(.bottom, safeArea().bottom + 5)
@@ -91,7 +65,7 @@ struct VideoPlayerView: View {
 
 struct VideoPlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        VideoPlayerView()
+        VideoPlayerView(fullscreen: .constant(true))
     }
 }
 
@@ -144,7 +118,6 @@ struct PlayerView: View {
                                 .resizable()
                                 .frame(width: 55, height: 60)
                         }
-                        
                     }
                 }
             }
@@ -161,8 +134,8 @@ struct PlayerView: View {
                 //enabling replay button
                 self.data[0].replay = true
             }
-            
         }
+        
     }
 }
 

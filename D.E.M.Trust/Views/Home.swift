@@ -170,7 +170,7 @@ struct Home: View {
         }
         .background {
             RoundedRectangle(cornerRadius: 15, style: .continuous)
-                .fill(Color("gradient-top"))
+                .fill(Color.topBG)
         }
         .matchedGeometryEffect(id: item.id, in: animation)
     }
@@ -195,10 +195,10 @@ struct Home: View {
                         
                     } label: {
                         Label {
-                            Text("Play")
+                            Text("More")
                                 .foregroundColor(.black)
                         } icon: {
-                            Image(systemName: "play.fill")
+                            Image(systemName: "ellipsis")
                         }
                         .sheet(isPresented: $showArtistSheet, onDismiss: {
                             animateView = false

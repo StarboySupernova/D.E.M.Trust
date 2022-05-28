@@ -31,7 +31,7 @@ struct OperationsView: View {
                         Image(systemName: "xmark")
                             .foregroundColor(.white)
                             .padding(10)
-                            .background(Color.topBG ,in: Circle())
+                            .background(Color.customOrange ,in: Circle())
                     }
                     .offset(x: expandCards ? 10 : 15)
                     .opacity(expandCards ? 1 : 0)
@@ -150,22 +150,30 @@ struct OperationsDetailView :  View {
     
     var body: some View {
         VStack {
-           CardView()
+            CardView()
                 .matchedGeometryEffect(id: currentCard.id, in: animation)
                 .frame(height: 200)
-                .onTapGesture {
-                    // closing respective view executed first, before detail
-                    withAnimation(.easeInOut) {
-                        showView = false
-                    }
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                        withAnimation(.easeInOut(duration: 0.35)) {
-                            showDetail = false
+                .overlay(alignment: .topTrailing, content: {
+                    Button {
+                        // closing respective view executed first, before detail
+                        withAnimation(.easeInOut) {
+                            showView = false
                         }
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                            withAnimation(.easeInOut(duration: 0.35)) {
+                                showDetail = false
+                            }
+                        }
+                    } label: {
+                        Image(systemName: "xmark")
+                            .foregroundColor(.white)
+                            .padding(10)
+                            .background(Color.customOrange ,in: Circle())
                     }
                     
-                }
+                })
+                .onTapGesture {}
                 .zIndex(10)
             
             GeometryReader{ geometry in
@@ -182,9 +190,15 @@ struct OperationsDetailView :  View {
                     ZStack {
                         Color.darkStart
                             .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
-                        .ignoresSafeArea()
+                            .ignoresSafeArea()
                         
-                        MapView()
+                        if currentCard == operationCards[0] {
+                            MapView()
+                        } else if currentCard == operationCards[1] {
+                            /*@START_MENU_TOKEN@*/EmptyView()/*@END_MENU_TOKEN@*/ //this will come from WalletUI video
+                        } else {
+                            EmptyView()
+                        }
                     }
                 )
                 .offset(y: showView ? 0 : height)

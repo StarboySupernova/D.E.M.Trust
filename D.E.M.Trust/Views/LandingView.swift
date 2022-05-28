@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LandingView: View {
+    @State private var fullscreen: Bool = false
     @Binding var selectedTab: String
     
     //hiding tab bar
@@ -22,15 +23,17 @@ struct LandingView: View {
             //Views
             Home()
                 .tag("Home")
+            OperationsView()
+                .tag("Operations")
             TrainingView()
                 .tag("Training")
+            VideoPlayerView(fullscreen: $fullscreen)
+                .tag("Documentaries")
+                .onTapGesture {
+                    fullscreen = true
+                }
             GalleryView()
-                .tag("Gallery")
-            // PlaylistView()
-            //   .tag("My Playlists")
-            // HistoryWrappingView()
-            //   .tag("History")
-            
+                .tag("Gallery")            
         }
     }
 }
@@ -39,6 +42,7 @@ struct LandingView: View {
 struct LandingView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
+            .preferredColorScheme(.light)
             .environmentObject(ModelData())
     }
 }

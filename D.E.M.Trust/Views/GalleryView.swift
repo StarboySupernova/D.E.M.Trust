@@ -24,13 +24,12 @@ struct GalleryView: View {
                     .multilineTextAlignment(.center)
                     .foregroundColor(.white)
                     .padding(.horizontal, 10)
-                    .modifier(ConcaveGlassView())
                 
                 Spacer()
                 
                 Button {
                     columns += 1
-                    if columns > 4 {
+                    if columns > 3 {
                         columns = 1
                     }
                 } label: {
@@ -51,9 +50,7 @@ struct GalleryView: View {
         .frame(maxHeight: .infinity)
         .frame(width: getRect().width)
         .background(
-            Background()
-                .cornerRadius(15)
-                .padding(.top)
+            
         )
         .onAppear {
             for index in 1...15 {

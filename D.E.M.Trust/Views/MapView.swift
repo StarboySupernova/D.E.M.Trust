@@ -15,9 +15,9 @@ struct MapView: View {
     
     let annotations = [
         Place(name: "D.E.M.T. HQ", coordinate: CLLocationCoordinate2D(latitude: -17.410297406604236, longitude:  32.225303461419905)),
-        Place(name: "Mutoko RDC", coordinate: CLLocationCoordinate2D(latitude:  -17.405219593471937, longitude:  32.22156983863289)),
+        Place(name: "Mutoko RDC", coordinate: CLLocationCoordinate2D(latitude:  -17.405219593471937, longitude:  32.22156983863289), image: "mutokordc"),
         Place(name: "Mutoko Hospital", coordinate: CLLocationCoordinate2D(latitude: -17.404646287223347, longitude: 32.23113996041184)),
-        Place(name: "DAO", coordinate: CLLocationCoordinate2D(latitude: -17.405281019063636, longitude: 32.22427350534853))
+        Place(name: "D.A.O.", coordinate: CLLocationCoordinate2D(latitude: -17.405281019063636, longitude: 32.22427350534853))
     ]
     
     var body: some View {
@@ -32,7 +32,7 @@ struct MapView: View {
                                 .cornerRadius(10, corners: [.topRight, .bottomLeft])
                                 .frame(width: 150, height: 150, alignment: .center)
                             
-                            LabelledDivider(label: "", horizontalPadding: 2, color: .black)
+                            LabelledDivider(label: "Home", horizontalPadding: 2, color: .green)
                             
                             HStack {
                                 Text(place.name)
@@ -42,19 +42,22 @@ struct MapView: View {
                                     .kerning(2)
                                     .multilineTextAlignment(.leading)
                                 
-                                Button {
-                                    //cubic transition
-                                } label: {
-                                    Text("Next")
-                                        .font(.subheadline)
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(.black)
-                                        .padding(10)
-                                        .background(.green, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
-                                }
+                                /*
+                                 Button {
+                                 //cubic transition
+                                 //to next place. Funcionaity to be added
+                                 } label: {
+                                 Text("Next")
+                                 .font(.subheadline)
+                                 .fontWeight(.semibold)
+                                 .foregroundColor(.black)
+                                 .padding(10)
+                                 .background(.green, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+                                 }
+                                 */
                             }
                         }
-                        .frame(width: 300, height: 200, alignment: .center)
+                        .frame(width: 250, height: 200, alignment: .center)
                         .padding()
                         .background {
                             RoundedRectangle(cornerRadius: 10, style: .continuous)
@@ -66,7 +69,7 @@ struct MapView: View {
                                 .offset(y: 15)
                         }
                     } else {
-                        HStack {
+                        VStack {
                             Image(systemName: "mappin.and.ellipse")
                                 .foregroundColor(.red)
                             
@@ -79,13 +82,13 @@ struct MapView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 10, style: .circular))
                         .overlay(alignment: .bottom) {
                             Image(systemName: "arrowtriangle.down.fill")
-                                .foregroundColor(.green)
+                                .foregroundColor(.red)
                                 .offset(y: 15)
                         }
                     }
                 }
             }
-
+            
         })
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
     }
@@ -99,15 +102,3 @@ struct MapView_Previews: PreviewProvider {
             .preferredColorScheme(.dark)
     }
 }
-/*
- -17.405219593471937,
- 32.22156983863289
- */
-
-/*
- 1st demt values
- -17.410421017982685, 32.24006652178922
- 
- -17.410297406604236,
- 32.225303461419905
- */

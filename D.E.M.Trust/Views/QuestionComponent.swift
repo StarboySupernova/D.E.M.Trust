@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct QuestionComponent: View {
+    @State private var index: Int = 1
+    @State private var title: String?
+    @State private var subtitle: String?
     var animation: Namespace.ID
     @Binding var show: Bool
     
@@ -15,15 +18,17 @@ struct QuestionComponent: View {
         VStack(alignment: .leading, spacing: 20) {
             //to be shared across the start and the end of the animation
             VStack(alignment: .leading, spacing: 12) {
-                Text("Swift")
+                Text(title ?? "D.E.M.T. Learning")
                     .font(.largeTitle)
                     .fontWeight(.bold)
+                    .shadow(color: .black, radius: 1, x: 1, y: 1)
                     .matchedGeometryEffect(id: "title", in: animation) //nb: integrity before modifier
                     .frame(maxWidth: .infinity, alignment: .leading) //positioning after modifier
                 
-                Text("20 sections - 3 hours".uppercased())
+                Text(subtitle?.uppercased() ?? "20 questions - Level: Easy".uppercased())
                     .font(.footnote)
                     .fontWeight(.semibold)
+                    .shadow(color: .black, radius: 1, x: 1, y: 1)
                     .matchedGeometryEffect(id: "subtitle", in: animation)
             }
             .matchedGeometryEffect(id: "blur", in: animation)
@@ -37,7 +42,7 @@ struct QuestionComponent: View {
         .foregroundStyle(.white)
         .background(
             ZStack {
-                Image("moonlight")
+                Image("demtJacket")
                     .resizable()
                     .clipShape(Circle())
                 Color.topBG.opacity(0.1)

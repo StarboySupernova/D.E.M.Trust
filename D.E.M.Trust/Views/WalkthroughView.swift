@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WalkThroughView: View {
     @State var offset: CGFloat = 0
+    var screenSize: CGSize
     
     var body: some View {
         VStack {
@@ -17,6 +18,7 @@ struct WalkThroughView: View {
                     .font(.largeTitle)
                     .foregroundColor(.white)
                     .multilineTextAlignment(.leading)
+                    .padding(.leading)
                 
                 Spacer()
                 
@@ -26,7 +28,6 @@ struct WalkThroughView: View {
                     Text("Skip")
                         .font(.caption)
                         .foregroundColor(.white)
-                        .modifier(ConvexGlassView())
                 }
                 .frame(width: 50, height: 20)
                 .padding()
@@ -36,32 +37,88 @@ struct WalkThroughView: View {
             .padding(.vertical, 10)
             
             OffsetPageTabView(offset: $offset) {
-                GeometryReader{ geometry in
-                    
-                    let size = geometry.size
-                    
-                    HStack(spacing: 0){
-                        ForEach(intros) {intro in
-                            VStack {
-                                Image(intro.image)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(height: size.height / 3)
+                HStack(spacing: 0){
+                    ForEach(intros) {intro in
+                        VStack {
+                            Image(intro.image)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(height: screenSize.height / 3)
+                            
+                            VStack(alignment: .leading, spacing: 20) {
+                                Text(intro.title)
+                                    .font(.largeTitle)
+                                    .bold()
+                                
+                                Text(intro.description)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.secondary)
                             }
-                            .padding()
+                            .foregroundStyle(.white)
+                            .padding(.top, 50)
                         }
+                        .padding()
+                        .frame(width: screenSize.width)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    .frame(width: size.width)
                 }
             }
+            
+            HStack(alignment: .bottom) {
+                
+                HStack(spacing: 12) {
+                    ForEach(intros.indices, id: \.self) { index in
+                    Capsule()
+                            .fill(.white)
+                            .frame(width: getOffsetIndex() == index ? 20 : 7, height: 7)
+                    }
+                }
+                .overlay(
+                    Capsule()
+                        .fill(.white)
+                        .frame(width: 20, height: 7)
+                        .offset(x: getIndicatorOffset())
+                    , alignment: .leading)
+                
+                Spacer()
+                
+                Button {
+                    let index = min(getOffsetIndex() + 1, intros.count - 1)
+                    offset = CGFloat(index) * screenSize.width
+                    //should enable functionality for it to pivot to MainView() when the end of intros is reached, same functionality for skip button
+                } label: {
+                    Image(systemName: "chevron.right")
+                        .font(.title2.bold())
+                        .foregroundColor(.white)
+                        .padding(20)
+                        .background(intros[getOffsetIndex()].color, in: Circle())
+                }
+
+            }
+            .padding(.horizontal)
         }
         .frame(maxWidth:.infinity, maxHeight:.infinity, alignment: .top)
+        .animation(.easeInOut, value: getOffsetIndex())
+    }
+    
+    func getIndicatorOffset() -> CGFloat {
+        let progress = offset / screenSize.width
+        //12 from HStack spacing, 7 from Circle size
+        let maxWidth: CGFloat = 12 + 7
+        return progress * maxWidth
+    }
+    
+    func getOffsetIndex() -> Int {
+        let progress = round(offset / screenSize.width)
+        let index = min(Int(progress), intros.count - 1)
+        return index
     }
 }
 
 struct WalkThroughView_Previews: PreviewProvider {
     static var previews: some View {
-        WalkThroughView()
+        OnBoardingView()
+            .preferredColorScheme(.dark)
     }
 }
 

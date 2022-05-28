@@ -13,11 +13,14 @@ struct OffsetPageTabView<Content: View>: UIViewRepresentable {
     var content: Content
     @Binding var offset: CGFloat
     
+    func makeCoordinator() -> Coordinator {
+        return OffsetPageTabView.Coordinator(parent: self)
+    }
+    
     init(offset: Binding<CGFloat>, @ViewBuilder content: @escaping () -> Content) {
         self._offset = offset
         self.content = content()
     }
-    
 
     func makeUIView(context: Context) -> UIScrollView {
 
@@ -42,17 +45,44 @@ struct OffsetPageTabView<Content: View>: UIViewRepresentable {
         scrollView.addSubview(hostView.view)
         scrollView.addConstraints(constraints)
         
+        //enabling paging
+        scrollView.isPagingEnabled = true
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
+        
+        scrollView.delegate = context.coordinator
+        
         return scrollView
     }
 
     func updateUIView(_ uiView: UIScrollView, context: Context) {
+        //only updating when offset in x-plane changes manually, i.e. when Walkthrough button is tapped
+        let currentOffset = uiView.contentOffset.x
+        if currentOffset != offset {
+            uiView.setContentOffset(CGPoint(x: offset, y: 0), animated: true)
+        }
+    }
+    
+    //Pager offset
+    class Coordinator: NSObject, UIScrollViewDelegate {
+        var parent: OffsetPageTabView
+        
+        init(parent: OffsetPageTabView) {
+            self.parent = parent
+        }
+        
+        func scrollViewDidScroll(_ scrollView: UIScrollView) {
+            let offset = scrollView.contentOffset.x
+            
+            parent.offset = offset
+        }
         
     }
 }
 
 struct OffsetPageTabView_Previews: PreviewProvider {
     static var previews: some View {
-        WalkThroughView()
+        OnBoardingView()
     }
 }
 

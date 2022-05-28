@@ -22,10 +22,9 @@ struct D_E_M_TrustApp: App {
     
     var body: some Scene {
         WindowGroup {
-            QAHome()
-            /* LaunchPoint()
+            LaunchPoint()
              .modifier(DarkModeViewModifier())
-             .environmentObject(modelData) */
+             .environmentObject(modelData) 
         }
     }
 }
