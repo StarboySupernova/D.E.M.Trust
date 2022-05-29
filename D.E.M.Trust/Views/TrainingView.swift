@@ -92,7 +92,7 @@ struct TrainingView: View {
                             ScrollView(.vertical, showsIndicators: false){
                                 VStack(spacing: -20) {
                                         HStack{
-                                            Text("Explore Categories".uppercased())
+                                            Text("Explore".uppercased())
                                                 .font(.footnote)
                                                 .fontWeight(.semibold)
                                                 .foregroundColor(.white)
@@ -109,7 +109,6 @@ struct TrainingView: View {
                                                     .font(.footnote)
                                                     .foregroundColor(.green)
                                             }
-
                                         }
                                         .foregroundColor(.white)
                                         .padding(.leading, 35)
@@ -120,33 +119,6 @@ struct TrainingView: View {
                                     
                                         ScrollViewReader { scrollView in
                                             ScrollView(horizontalSizeClass == .compact ? .horizontal : .init(), showsIndicators: false) {
-                                                Button {
-                                                    if scrollToEnd == false {
-                                                        withAnimation(.spring()) {
-                                                            scrollView.scrollTo(3)
-                                                            //will not work since container view is a scrollview, hence according to the documentation, the view is wholly visible inside the container if the container is a scrollview or any other view that has no fixed anchor
-                                                            //needed to remove containing horizontal scrollview for this to work
-                                                            //will still remove anyway for both sylistic reasons and to suppress compiler warning - 2022-05-28 01:12:56.328272+0100 D.E.M.Trust[68625:696460] [error] precondition failure: invalid graph update (access from multiple threads?)
-                                                        }
-                                                        
-                                                        scrollToEnd = true
-                                                    }
-                                                } label: {
-                                                    Image(systemName: "chevron.right")
-                                                        .font(.title3)
-                                                        .foregroundColor(.white)
-                                                        //.resizedToFit(width: 35, height: 30)
-                                                        .padding(10)
-                                                        .background(
-                                                            Ellipse()
-                                                                .stroke(.white, style: StrokeStyle())
-                                                                .background(Ellipse().fill(.green))
-                                                        )
-                                                }
-                                                .opacity(scrollToEnd ? 0 : 1)
-                                                .frame(width: 60, height: 60)
-                                                .offset(x: getRect().width < 400 ? -25 : 5)
-                                                
                                                 HStack {
                                                     //can make array of tiles in future, for better modularity
                                                     tile(title: "Learn to take care of your environment", "welcomingtree")
@@ -161,7 +133,7 @@ struct TrainingView: View {
                                                 .padding()
                                                 .background(
                                                     RoundedRectangle(cornerRadius: 15, style: .circular)
-                                                        .fill(Color.topBG)
+                                                        .fill(Color.green)
                                                         .padding()
                                                         .padding(.bottom, 20)
                                                 )
