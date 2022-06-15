@@ -20,6 +20,7 @@ struct OperationsView: View {
         VStack (spacing: 0) {
             Text("Operations")
                 .font(.largeTitle)
+                .foregroundColor(.white)
                 .fontWeight(.ultraLight)
                 .frame(maxWidth: .infinity, alignment: expandCards ? .leading : .center)
                 .overlay (alignment: .trailing) {
@@ -38,6 +39,19 @@ struct OperationsView: View {
                 }
                 .padding(.horizontal, 15)
                 .padding(.bottom, 10)
+                .background(
+                    HStack {
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                    .padding(.top, safeArea().top)
+                    .padding(.bottom, 60)
+                    .background(Color("unicorn"))
+                    .opacity(0.5)
+                    .clipShape(
+                        Corners(corner: expandCards ? [.bottomRight, .topLeft] : [.topLeft], size: CGSize(width: expandCards ? 55 : 20, height: expandCards ? 55 : 20))
+                    )
+                )
             
             ScrollView(.vertical, showsIndicators: false) {
                 VStack (spacing: 0) {
@@ -71,6 +85,9 @@ struct OperationsView: View {
                 }
                 .padding(.top, expandCards ? 30 : 0)
             }
+            .background(
+                expandCards ? Color.clear : Color("unicorn").opacity(0.5)
+            )
             .coordinateSpace(name: "SCROLL")
             .offset(y: expandCards ? 0 : 30)
         }
@@ -173,7 +190,7 @@ struct OperationsDetailView :  View {
                     }
                     
                 })
-                .onTapGesture {}
+                //.onTapGesture {}
                 .zIndex(10)
             
             GeometryReader{ geometry in
@@ -181,24 +198,26 @@ struct OperationsDetailView :  View {
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 20) {
-                        //MapView here
+                       //intentional, because if we use mapview inside here, width dimensions for frame are not respected and we would need to find a solution for that
                     }
                     .padding()
                 }
-                .frame(maxWidth: getRect().width)
+                .frame(maxWidth: getRect().width + 10)
                 .background(
                     ZStack {
                         Color.darkStart
-                            .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                            .cornerRadius(15, corners: [.topLeft, .topRight])
                             .ignoresSafeArea()
                         
                         if currentCard == operationCards[0] {
                             MapView()
+                                .cornerRadius(15, corners: [.topRight, .topLeft])
                         } else if currentCard == operationCards[1] {
                             /*@START_MENU_TOKEN@*/EmptyView()/*@END_MENU_TOKEN@*/ //this will come from WalletUI video
                         } else {
                             EmptyView()
                         }
+
                     }
                 )
                 .offset(y: showView ? 0 : height)
