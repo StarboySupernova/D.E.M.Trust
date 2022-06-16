@@ -1,0 +1,54 @@
+//
+//  MessagesManager.swift
+//  D.E.M.Trust
+//
+//  Created by Simbarashe Dombodzvuku on 6/16/22.
+//
+
+import Foundation
+import FirebaseFirestore
+import FirebaseFirestoreSwift
+
+class MessagesManager: ObservableObject {
+    @Published private(set) var messages: [Message] = []
+    @Published private(set) var lastMessageID = ""
+    let db = Firestore.firestore()
+    
+    init() {
+        getMessages()
+    }
+    
+    func getMessages() {
+        db.collection("messages").addSnapshotListener { querySnapshot, error in
+            guard let documents = querySnapshot?.documents else {
+                print("Error fetching documents: \(String(describing: error))")
+                return
+            }
+            
+            //compactMap is similar to map but will only return the non nil values of the array
+            self.messages = documents.compactMap { document -> Message? in
+                do {
+                    return try document.data(as: Message.self)
+                } catch {
+                    print("Error decoding document into message: \(error)")
+                    return nil
+                }
+            }
+            
+            self.messages.sort {$0.timestamp < $1.timestamp}
+            
+            if let id = self.messages.last?.id {
+                self.lastMessageID = id
+            }
+        }
+    }
+    
+    func sendMessage(text: String) {
+        do {
+            let newMessage = Message(text: text, receiver: false, timestamp: Date())
+            try db.collection("messages").document().setData(from: newMessage)
+        } catch {
+            print("Error sending message: \(error)")
+        }
+    }
+}

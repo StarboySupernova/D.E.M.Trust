@@ -54,6 +54,7 @@
 		8082BD142813A6C60093FB1D /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8082BD132813A6C60093FB1D /* SideMenu.swift */; };
 		8082BD162813A7760093FB1D /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8082BD152813A7760093FB1D /* TabButton.swift */; };
 		808B9341285AD9C900452BA6 /* MessageField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808B9340285AD9C900452BA6 /* MessageField.swift */; };
+		808B9343285AEBA800452BA6 /* MessagesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808B9342285AEBA800452BA6 /* MessagesManager.swift */; };
 		8090A6BE284171C200C8EE45 /* RichBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8090A6BD284171C200C8EE45 /* RichBackgroundView.swift */; };
 		809DD29D281E1A5E0095F656 /* TrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DD29C281E1A5E0095F656 /* TrainingView.swift */; };
 		80A2D09728220A1000B33872 /* OperationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A2D09628220A1000B33872 /* OperationCard.swift */; };
@@ -120,6 +121,7 @@
 		8082BD132813A6C60093FB1D /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
 		8082BD152813A7760093FB1D /* TabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
 		808B9340285AD9C900452BA6 /* MessageField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageField.swift; sourceTree = "<group>"; };
+		808B9342285AEBA800452BA6 /* MessagesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesManager.swift; sourceTree = "<group>"; };
 		8090A6BD284171C200C8EE45 /* RichBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RichBackgroundView.swift; sourceTree = "<group>"; };
 		809DD29C281E1A5E0095F656 /* TrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingView.swift; sourceTree = "<group>"; };
 		80A2D09628220A1000B33872 /* OperationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationCard.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				8048AB5E2834833200C04B08 /* QuestionViewModel.swift */,
+				808B9342285AEBA800452BA6 /* MessagesManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 				8009F1592824774F00F3C2BF /* ExamView.swift in Sources */,
 				8082BD122813A64D0093FB1D /* MainView.swift in Sources */,
 				8082BD162813A7760093FB1D /* TabButton.swift in Sources */,
+				808B9343285AEBA800452BA6 /* MessagesManager.swift in Sources */,
 				80E8952F2835AF5900405EB1 /* QuestionView.swift in Sources */,
 				8066803F285AC00C00BE1A54 /* Message.swift in Sources */,
 				803A77332830760600798369 /* QuestionDetailView.swift in Sources */,
