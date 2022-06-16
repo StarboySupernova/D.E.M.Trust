@@ -32,7 +32,7 @@ extension Image {
             .frame(width: width, height: height)
     }
     
-    /// Resize an image with fill aspect ratio, customizable aspect ratio value and specified frame dimensions.
+    /// Resize an image with fill aspect ratio, customizable aspect ratio value (default: 4/3) and specified frame dimensions.
     ///   - parameters:
     ///     - width: Frame width.
     ///     - height: Frame height.
@@ -44,7 +44,7 @@ extension Image {
             .frame(width: width, height: height)
     }
     
-    /// Resize an image with fit aspect ratio, customizable aspect ratio value and specified frame dimensions.
+    /// Resize an image with fit aspect ratio, customizable aspect ratio value (default: 4/3) and specified frame dimensions.
     ///   - parameters:
     ///     - width: Frame width.
     ///     - height: Frame height.
