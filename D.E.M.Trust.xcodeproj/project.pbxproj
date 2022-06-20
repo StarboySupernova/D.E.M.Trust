@@ -66,6 +66,7 @@
 		80B83FFF28272E3F00F871A5 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B83FFE28272E3F00F871A5 /* MapView.swift */; };
 		80B8400128272F0A00F871A5 /* MapComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B8400028272F0A00F871A5 /* MapComponent.swift */; };
 		80C2B207280A492200419E75 /* ExtensionOnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C2B206280A492200419E75 /* ExtensionOnView.swift */; };
+		80C6B9C4286133EA00F52F52 /* iPadLaunchPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C6B9C3286133EA00F52F52 /* iPadLaunchPoint.swift */; };
 		80E830DC280F6392008619C9 /* LaunchPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E830DB280F6392008619C9 /* LaunchPoint.swift */; };
 		80E830DE280F85DA008619C9 /* ExtensionOnColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E830DD280F85DA008619C9 /* ExtensionOnColor.swift */; };
 		80E830E0280F8698008619C9 /* ExtensionOnLinearGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E830DF280F8698008619C9 /* ExtensionOnLinearGradient.swift */; };
@@ -134,6 +135,7 @@
 		80B83FFE28272E3F00F871A5 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		80B8400028272F0A00F871A5 /* MapComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponent.swift; sourceTree = "<group>"; };
 		80C2B206280A492200419E75 /* ExtensionOnView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionOnView.swift; sourceTree = "<group>"; };
+		80C6B9C3286133EA00F52F52 /* iPadLaunchPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPadLaunchPoint.swift; sourceTree = "<group>"; };
 		80E830DB280F6392008619C9 /* LaunchPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchPoint.swift; sourceTree = "<group>"; };
 		80E830DD280F85DA008619C9 /* ExtensionOnColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionOnColor.swift; sourceTree = "<group>"; };
 		80E830DF280F8698008619C9 /* ExtensionOnLinearGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionOnLinearGradient.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				800E7896283718AF008911AB /* UserProfileView.swift */,
 				8090A6BD284171C200C8EE45 /* RichBackgroundView.swift */,
 				80A8D78A285BF5D0004CBB6F /* AboutUs.swift */,
+				80C6B9C3286133EA00F52F52 /* iPadLaunchPoint.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				800E78952836E4F2008911AB /* OnBoardingView.swift in Sources */,
 				801EA1ED28275C87004E5DE4 /* LabelledDivider.swift in Sources */,
 				800E789928371E3B008911AB /* PhotoPicker.swift in Sources */,
+				80C6B9C4286133EA00F52F52 /* iPadLaunchPoint.swift in Sources */,
 				801AFDF7281378AA00AE3C53 /* GalleryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
