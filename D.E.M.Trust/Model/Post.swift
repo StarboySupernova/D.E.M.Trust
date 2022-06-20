@@ -10,6 +10,11 @@ import SwiftUI
 
 struct Post: Identifiable, Hashable {
     var id = UUID().uuidString
-    var imageURL: String
+    var imageURL: String //image name - "post\(index)"
+    var postName: String? = nil
+    var showLogo: Bool = false
+    var logoOffset: CGFloat = 0
 }
+
+var projects: [Post] = []
 
