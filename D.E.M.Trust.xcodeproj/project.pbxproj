@@ -65,6 +65,7 @@
 		80B61BAE28309231001B0470 /* OffsetPageTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B61BAD28309231001B0470 /* OffsetPageTabView.swift */; };
 		80B83FFF28272E3F00F871A5 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B83FFE28272E3F00F871A5 /* MapView.swift */; };
 		80B8400128272F0A00F871A5 /* MapComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B8400028272F0A00F871A5 /* MapComponent.swift */; };
+		80BC01E12863E38800F2B753 /* HeroPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BC01E02863E38800F2B753 /* HeroPageView.swift */; };
 		80C2B207280A492200419E75 /* ExtensionOnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C2B206280A492200419E75 /* ExtensionOnView.swift */; };
 		80C6B9C4286133EA00F52F52 /* iPadLaunchPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C6B9C3286133EA00F52F52 /* iPadLaunchPoint.swift */; };
 		80E830DC280F6392008619C9 /* LaunchPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E830DB280F6392008619C9 /* LaunchPoint.swift */; };
@@ -134,6 +135,7 @@
 		80B61BAD28309231001B0470 /* OffsetPageTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetPageTabView.swift; sourceTree = "<group>"; };
 		80B83FFE28272E3F00F871A5 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		80B8400028272F0A00F871A5 /* MapComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponent.swift; sourceTree = "<group>"; };
+		80BC01E02863E38800F2B753 /* HeroPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroPageView.swift; sourceTree = "<group>"; };
 		80C2B206280A492200419E75 /* ExtensionOnView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionOnView.swift; sourceTree = "<group>"; };
 		80C6B9C3286133EA00F52F52 /* iPadLaunchPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPadLaunchPoint.swift; sourceTree = "<group>"; };
 		80E830DB280F6392008619C9 /* LaunchPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchPoint.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				8090A6BD284171C200C8EE45 /* RichBackgroundView.swift */,
 				80A8D78A285BF5D0004CBB6F /* AboutUs.swift */,
 				80C6B9C3286133EA00F52F52 /* iPadLaunchPoint.swift */,
+				80BC01E02863E38800F2B753 /* HeroPageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				801AFDFC28137AB400AE3C53 /* StaggeredGrid.swift in Sources */,
 				80E830DE280F85DA008619C9 /* ExtensionOnColor.swift in Sources */,
 				801AFDF42811020500AE3C53 /* ExtensionOnImage.swift in Sources */,
+				80BC01E12863E38800F2B753 /* HeroPageView.swift in Sources */,
 				80E830E4280F87E1008619C9 /* RoundedCorner.swift in Sources */,
 				80E830E8280F893F008619C9 /* ExtensionOnString.swift in Sources */,
 				802F8F1C282F0DC100F3D6E2 /* ConcaveGlassModifier.swift in Sources */,

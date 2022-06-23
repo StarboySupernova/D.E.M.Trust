@@ -56,7 +56,7 @@ struct QuestionDetailView: View {
                             .font(.footnote)
                         Divider()
                         HStack {
-                            Image("DEMTLogo")
+                            Image("demtLogo")
                                 .resizable()
                                 .frame(width: 30, height: 30)
                                 .aspectRatio(contentMode: .fit)

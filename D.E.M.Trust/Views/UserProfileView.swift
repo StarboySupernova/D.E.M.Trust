@@ -36,7 +36,7 @@ struct UserProfileView: View {
                     HStack{
                         Spacer()
                         
-                        Image("DEMTLogo")
+                        Image("demtLogo")
                             .resizable()
                             .saturation(0)
                         //.colorMultiply(Color("theme"))

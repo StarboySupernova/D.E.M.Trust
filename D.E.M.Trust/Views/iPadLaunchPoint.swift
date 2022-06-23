@@ -27,7 +27,7 @@ struct OnboardView: View{
     let title: String
     let description: String
     var body: some View {
-        VStack (spacing: 20) {
+        VStack (spacing: 20) { 
             Image(systemName: systemImageName)
                 .resizable()
                 .scaledToFit()

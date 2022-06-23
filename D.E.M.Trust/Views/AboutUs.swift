@@ -11,14 +11,26 @@ struct AboutUs: View {
     @State private var posts: [Post] = projects
     //Custom scroller properties
     @State private var currentIndex: Int = 0
-    @State private var currentPost: Post = projects.first!
+    @State private var currentPost: Post = projects[0]
+    @State private var lineLimit: Int = 4
     
     var body: some View {
         VStack(spacing: 0) {
             Text(titleString)
-                .font(.largeTitle)
+                .font(.body)
+                .fontWeight(.ultraLight)
+                .multilineTextAlignment(.trailing)
+                .lineLimit(lineLimit)
+                .foregroundColor(.white)
                 .frame(maxWidth: .infinity)
-                .padding(.bottom, 40)
+                .padding(.bottom, 20)
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                        withAnimation(.easeInOut.delay(1)) {
+                            lineLimit = 1
+                        }
+                    }
+                }
             
             //MARK: Custom scroller
             VStack {
@@ -46,14 +58,14 @@ struct AboutUs: View {
                                 post.logoOffset = 0
                                 
                                 withAnimation(.easeInOut(duration: 0.6)) {
-                                    projects[currentIndex].showLogo = false
+                                    //projects[currentIndex].showLogo = false
                                     currentIndex = getIndex(post: post)
                                     currentPost = projects[currentIndex]
                                 }
                                 
-                                withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 1, blendDuration: 1).delay(0.4)) {
+                               /* withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 1, blendDuration: 1).delay(0.4)) {
                                     projects[currentIndex].showLogo = true
-                                }
+                                } */
 
                             }
                         }
@@ -102,16 +114,12 @@ struct AboutUs: View {
             HStack {
                 Text("D.E.M.T.")
                     .fontWeight(.light)
-                    .foregroundColor(.gray.opacity(0.6))
+                    .foregroundColor(.gray.opacity(0.9))
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
-                HStack(spacing: 5) {
-                    ForEach(1...5, id: \.self) { index in
-                        Image(systemName: "leaf.circle.fill")
-                            .font(.callout)
-                            .foregroundColor(.topBG)
-                    }
-                }
+                Image(systemName: "leaf.circle.fill")
+                    .font(.callout)
+                    .foregroundColor(.topBG)
             }
             
             Text(post.postName ?? "")
@@ -119,9 +127,9 @@ struct AboutUs: View {
                 .bold()
             
             ScrollView {
-                Text("Lorem ipsum text")
+                Text(post.postText ?? "")
                     .multilineTextAlignment(.leading)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.white)
                     .padding(.top, 10)
             }
         }
@@ -129,10 +137,10 @@ struct AboutUs: View {
         .padding([.horizontal, .bottom])
         .background {
             RoundedCorner(radius: 25, corners: [.bottomLeft, .bottomRight])
-                .fill(.white.opacity(0.6))
+                .fill(.black.opacity(0.6))
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-        .padding(.horizontal, 30)
+        .padding(.horizontal, 5)
         
     }
     
@@ -145,12 +153,13 @@ struct AboutUs: View {
                 ForEach($posts) { $post in
                     HStack(spacing: 0) {
                         Image(post.imageURL)
-                            .resizedToFill(width: 170, height: 180)
+                            .resizedToFill(width: 180, height: 180)
                             .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
                             .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 10)
                             .zIndex(1)
                         
-                        Image("demtLogo")
+                        /* //needs fine tuning
+                         Image("demtLogo")
                             .resizedToFit(width: 160, height: 180)
                             .rotationEffect(.init(degrees: post.showLogo ? 0 : 40))
                             .rotationEffect(.init(degrees: post.logoOffset / -80) * 40)
@@ -158,6 +167,7 @@ struct AboutUs: View {
                             .scaleEffect(post.showLogo ? 1 : 0.1)
                             .offset(x: post.showLogo ? 80 : 0)
                             .zIndex(0)
+                         */
                     }
                     // 80 / 2 = 40
                     .offset(x: -35)
@@ -173,8 +183,8 @@ struct AboutUs: View {
     
     //MARK: Attributed String
     var titleString: AttributedString {
-        var attString = AttributedString(stringLiteral: "About Us - D.E.M.T.")
-        if let range = attString.range(of: "About Us") {
+        var attString = AttributedString(stringLiteral: "Organizational Profile - D.E.M.T. : Protocol Number: MA0000072/2020")
+        if let range = attString.range(of: "Organizational Profile") {
             attString[range].font = .largeTitle.bold()
         }
         
@@ -185,6 +195,7 @@ struct AboutUs: View {
 struct AboutUs_Previews: PreviewProvider {
     static var previews: some View {
         AboutUs()
+            .preferredColorScheme(.dark)
     }
 }
 

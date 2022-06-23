@@ -128,7 +128,7 @@ struct Home: View {
             }
             
             HStack(spacing: 12) {
-                Image("DEMTLogo")
+                Image("demtLogo")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 60, height: 60)

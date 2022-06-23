@@ -82,8 +82,10 @@ struct LaunchPoint: View {
                             .padding(.trailing, 30)
                         
                         if showBanner {
-                            BannerView()
+                            /*
+                             BannerView()
                                 .opacity(showHome ? 0 : 1)
+                             */
                         }
                         
                         if showHome {
@@ -157,9 +159,11 @@ struct LaunchPoint: View {
                         if showBanner {
                             VStack {
                                 Spacer()
-                                BannerView()
+                                /*
+                                 BannerView()
                                     .opacity(showHome ? 0 : 1)
                                     .padding(.trailing, 20)
+                                 */
                             }
                         }
                     } else {
@@ -195,25 +199,3 @@ struct LaunchPoint_Previews: PreviewProvider {
     }
 }
 
-struct BannerView: View {
-    var body: some View {
-        VStack(alignment: .center) {
-            HStack(alignment: .bottom) {
-                Image("DEMTLogo")
-                    .resizedToFill(width: 200, height: 200)
-                    .cornerRadius(10, corners: .allCorners)
-                    .cornerRadius(30, corners: [.topLeft, .bottomRight])
-                
-                Text("Disaster and Environmental Management Trust")
-                    .foregroundColor(.primary)
-                    .font(.system(size: 20, design: .rounded))
-                    .multilineTextAlignment(.trailing)
-            }
-        }
-        .padding()
-        .background {
-            RoundedRectangle(cornerRadius: 10, style: .continuous)
-                .fill(.ultraThinMaterial)
-        }
-    }
-}
