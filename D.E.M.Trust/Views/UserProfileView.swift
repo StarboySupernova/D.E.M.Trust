@@ -9,7 +9,14 @@ import SwiftUI
 
 struct UserProfileView: View {
     @State private var isShowingPhotoPicker: Bool = false
-    @State private var avatar = UIImage(named: "usericon")! //will need to upload this to firestore
+    @State private var avatar = UIImage(named: "romeo")! //will need to upload this to firestore
+    @State private var showUserAlert: Bool = false
+    
+    @Environment(\.dismiss) var dismiss
+    @StateObject private var registerVM = RegisterViewModel()
+    
+    @Binding var showUserProfile: Bool
+    @Binding var userName: String
     
     @State private var name: String = ""
     @State private var email: String = ""
@@ -152,7 +159,7 @@ struct UserProfileView: View {
                             .background(
                                 Color("unicorn")
                                     .cornerRadius(15, corners: [.topLeft, .bottomRight])
-                                    .glow(color: .green, radius: 15)
+                                    .glow(color: .green, radius: 3)
                             )
                             .padding()
                             .onTapGesture {
@@ -166,20 +173,24 @@ struct UserProfileView: View {
                             .padding(.horizontal)
                             .shadow(color: .black, radius: 5, x: 1, y: 1)
                         
-                        TextField("Enter username", text: $name)
+                        TextField("Enter username", text: showUserAlert ? $userName : $registerVM.username)
+                            .autocapitalization(.none)
                             .modifier(ConcaveGlassView())
                             .frame(width: getRect().width * 0.75)
                         
-                        TextField("Enter email", text: $email)
+                        TextField("Enter email", text: $registerVM.email)
+                            .autocapitalization(.none)
                             .modifier(ConcaveGlassView())
                             .frame(width: getRect().width * 0.75)
                         
-                        SecureField("Enter password", text: $password)
+                        SecureField("Enter password", text: $registerVM.password)
+                            .autocapitalization(.none)
                             .modifier(ConcaveGlassView())
                             .frame(width: getRect().width * 0.75)
                         
                         
-                        SecureField("Re-enter password", text: $passwordAgain)
+                        SecureField("Re-enter password", text: $registerVM.password)
+                            .autocapitalization(.none)
                             .modifier(ConcaveGlassView())
                             .frame(width: getRect().width * 0.75)
                         
@@ -190,6 +201,10 @@ struct UserProfileView: View {
                         
                         Button {
                             //TODO:- add action
+                            showUserAlert = true
+                            registerVM.register {
+                                dismiss()
+                            }
                         } label: {
                             ZStack {
                                 Text("SIGN UP")
@@ -198,17 +213,19 @@ struct UserProfileView: View {
                                     .frame(maxWidth: getRect().width * 0.85)
                                 //.frame(height:  getRect().height * 0.075)
                                 //.background(.thickMaterial)
-                                //.cornerRadius(14)
+                                .cornerRadius(14)
                                     .modifier(ConvexGlassView())
                                     .padding(.bottom, 8)
                             }
                         }
-                        
+                        .alert(isPresented: $showUserAlert) {
+                            Alert(title: Text("✔️"), message: Text("User registered successfully"), dismissButton: .default(Text("Continue")))
+                        }
                     }
                     .padding()
                     .background {
-                        ZStack {
-                            LinearGradient(colors: [.topBG, .bottomBG], startPoint: .topLeading, endPoint: .bottomTrailing)
+                        /*ZStack {
+                            LinearGradient(colors: [Color("unicorn"), .bottomBG], startPoint: .topLeading, endPoint: .bottomTrailing)
                                 .hueRotation(.degrees(animateGradient ? 45 : 0))
                                 .ignoresSafeArea()
                                 .onAppear {
@@ -219,7 +236,7 @@ struct UserProfileView: View {
                             
                             Rectangle()
                                 .fill(.thinMaterial)
-                        }
+                        }*/
                     }
                     .foregroundColor(Color.primary.opacity(0.35))
                     .foregroundStyle(.ultraThinMaterial)
@@ -238,7 +255,7 @@ struct UserProfileView: View {
 
 struct UserProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        UserProfileView()
+        UserProfileView(showUserProfile: .constant(true), userName: .constant("username"))
             .preferredColorScheme(.dark)
     }
 }

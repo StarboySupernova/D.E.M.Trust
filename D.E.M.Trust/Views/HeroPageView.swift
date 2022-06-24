@@ -11,6 +11,7 @@ struct HeroPageView: View {
     @State private var moving = false
     @State private var showBanner: Bool = false
     @State private var showHome: Bool = false
+    @State private var showWalkthrough: Bool = true
     @State private var progress: CGFloat = 0
     
     let backgroundGradient = Gradient(colors: [.darkStart.opacity(0.1), .bottomBG.opacity(0.1)])
@@ -21,89 +22,93 @@ struct HeroPageView: View {
             if showHome {
                 MainView()
             } else {
-                ZStack(alignment: .center) {
-                    Rectangle()
-                        .animatableGradient(fromGradient: backgroundGradient, toGradient: backgroundGradient2, progress: progress)
-                        .ignoresSafeArea()
-                        .onAppear {
-                            withAnimation(.linear(duration: 5.0).repeatForever(autoreverses: true)) {
-                                self.progress = 1.0
+                if showWalkthrough {
+                    OnBoardingView(showHome: $showHome, showWalkthrough: $showWalkthrough)
+                } else {
+                    ZStack(alignment: .center) {
+                        Rectangle()
+                            .animatableGradient(fromGradient: backgroundGradient, toGradient: backgroundGradient2, progress: progress)
+                            .ignoresSafeArea()
+                            .onAppear {
+                                withAnimation(.linear(duration: 5.0).repeatForever(autoreverses: true)) {
+                                    self.progress = 1.0
+                                }
+                            }
+                        
+                        Circle() // One
+                            .stroke(lineWidth: 5)
+                            .frame(width: 20, height: 20)
+                            .rotation3DEffect(.degrees(75), axis: (x: 1, y: 0, z: 0))
+                            .offset(y: moving ? 0 : -getRect().height * 0.25)
+                            .animation(.interpolatingSpring(stiffness: 100, damping: 5).repeatForever(autoreverses: true), value: moving)
+                        
+                        Circle()  // Two
+                            .stroke(lineWidth: 4)
+                            .frame(width: 50, height: 50)
+                            .rotation3DEffect(.degrees(75), axis: (x: 1, y: 0, z: 0))
+                            .offset(y: moving ? 0 : -getRect().height * 0.25)
+                            .animation(.interpolatingSpring(stiffness: 100, damping: 5).repeatForever(autoreverses: true).delay(0.05), value: moving)
+                        
+                        Circle()  // Three
+                            .stroke(lineWidth: 3)
+                            .frame(width: 80, height: 80)
+                            .rotation3DEffect(.degrees(75), axis: (x: 1, y: 0, z: 0))
+                            .offset(y: moving ? 0 : -getRect().height * 0.25)
+                            .animation(.interpolatingSpring(stiffness: 100, damping: 5).repeatForever(autoreverses: true).delay(0.1), value: moving)
+                        
+                        Circle()  // Four
+                            .stroke(lineWidth: 3)
+                            .frame(width: 110, height: 110)
+                            .rotation3DEffect(.degrees(75), axis: (x: 1, y: 0, z: 0))
+                            .offset(y: moving ? 0 : -getRect().height * 0.25)
+                            .animation(.interpolatingSpring(stiffness: 100, damping: 5).repeatForever(autoreverses: true).delay(0.15), value: moving)
+                        
+                        Circle()  // Five
+                            .stroke(lineWidth: 2)
+                            .frame(width: 140, height: 140)
+                            .rotation3DEffect(.degrees(75), axis: (x: 1, y: 0, z: 0))
+                            .offset(y: moving ? 0 : -getRect().height * 0.25)
+                            .animation(.interpolatingSpring(stiffness: 100, damping: 5).repeatForever(autoreverses: true).delay(0.2), value: moving)
+                        
+                        Circle()  // Six
+                            .stroke(lineWidth: 2)
+                            .frame(width: 170, height: 170)
+                            .rotation3DEffect(.degrees(75), axis: (x: 1, y: 0, z: 0))
+                            .offset(y: moving ? 0 : -getRect().height * 0.25)
+                            .animation(.interpolatingSpring(stiffness: 100, damping: 5).repeatForever(autoreverses: true).delay(0.25), value: moving)
+                        
+                        Circle()  // Seven
+                            .stroke(lineWidth: 1)
+                            .frame(width: 200, height: 200)
+                            .rotation3DEffect(.degrees(75), axis: (x: 1, y: 0, z: 0))
+                            .offset(y: moving ? 0 : -getRect().height * 0.25)
+                            .animation(.interpolatingSpring(stiffness: 100, damping: 5).repeatForever(autoreverses: true).delay(0.3), value: moving)
+                        
+                        Circle()  // Eight
+                            .stroke(lineWidth: 1)
+                            .frame(width: 230, height: 230)
+                            .rotation3DEffect(.degrees(75), axis: (x: 1, y: 0, z: 0))
+                            .offset(y: moving ? 0 : -getRect().height * 0.25)
+                            .animation(.interpolatingSpring(stiffness: 100, damping: 5).repeatForever(autoreverses: true).delay(0.35), value: moving)
+                        
+                        Group {
+                            if showBanner {
+                                BannerView(showHome: $showHome)
+                                    .transition(AnyTransition.slide)
                             }
                         }
-                    
-                    Circle() // One
-                        .stroke(lineWidth: 5)
-                        .frame(width: 20, height: 20)
-                        .rotation3DEffect(.degrees(75), axis: (x: 1, y: 0, z: 0))
-                        .offset(y: moving ? 0 : -getRect().height * 0.25)
-                        .animation(.interpolatingSpring(stiffness: 100, damping: 5).repeatForever(autoreverses: true), value: moving)
-                    
-                    Circle()  // Two
-                        .stroke(lineWidth: 4)
-                        .frame(width: 50, height: 50)
-                        .rotation3DEffect(.degrees(75), axis: (x: 1, y: 0, z: 0))
-                        .offset(y: moving ? 0 : -getRect().height * 0.25)
-                        .animation(.interpolatingSpring(stiffness: 100, damping: 5).repeatForever(autoreverses: true).delay(0.05), value: moving)
-                    
-                    Circle()  // Three
-                        .stroke(lineWidth: 3)
-                        .frame(width: 80, height: 80)
-                        .rotation3DEffect(.degrees(75), axis: (x: 1, y: 0, z: 0))
-                        .offset(y: moving ? 0 : -getRect().height * 0.25)
-                        .animation(.interpolatingSpring(stiffness: 100, damping: 5).repeatForever(autoreverses: true).delay(0.1), value: moving)
-                    
-                    Circle()  // Four
-                        .stroke(lineWidth: 3)
-                        .frame(width: 110, height: 110)
-                        .rotation3DEffect(.degrees(75), axis: (x: 1, y: 0, z: 0))
-                        .offset(y: moving ? 0 : -getRect().height * 0.25)
-                        .animation(.interpolatingSpring(stiffness: 100, damping: 5).repeatForever(autoreverses: true).delay(0.15), value: moving)
-                    
-                    Circle()  // Five
-                        .stroke(lineWidth: 2)
-                        .frame(width: 140, height: 140)
-                        .rotation3DEffect(.degrees(75), axis: (x: 1, y: 0, z: 0))
-                        .offset(y: moving ? 0 : -getRect().height * 0.25)
-                        .animation(.interpolatingSpring(stiffness: 100, damping: 5).repeatForever(autoreverses: true).delay(0.2), value: moving)
-                    
-                    Circle()  // Six
-                        .stroke(lineWidth: 2)
-                        .frame(width: 170, height: 170)
-                        .rotation3DEffect(.degrees(75), axis: (x: 1, y: 0, z: 0))
-                        .offset(y: moving ? 0 : -getRect().height * 0.25)
-                        .animation(.interpolatingSpring(stiffness: 100, damping: 5).repeatForever(autoreverses: true).delay(0.25), value: moving)
-                    
-                    Circle()  // Seven
-                        .stroke(lineWidth: 1)
-                        .frame(width: 200, height: 200)
-                        .rotation3DEffect(.degrees(75), axis: (x: 1, y: 0, z: 0))
-                        .offset(y: moving ? 0 : -getRect().height * 0.25)
-                        .animation(.interpolatingSpring(stiffness: 100, damping: 5).repeatForever(autoreverses: true).delay(0.3), value: moving)
-                    
-                    Circle()  // Eight
-                        .stroke(lineWidth: 1)
-                        .frame(width: 230, height: 230)
-                        .rotation3DEffect(.degrees(75), axis: (x: 1, y: 0, z: 0))
-                        .offset(y: moving ? 0 : -getRect().height * 0.25)
-                        .animation(.interpolatingSpring(stiffness: 100, damping: 5).repeatForever(autoreverses: true).delay(0.35), value: moving)
-                    
-                    Group {
-                        if showBanner {
-                            BannerView(showHome: $showHome)
-                                .transition(AnyTransition.slide)
+                        .animation(.easeInOut, value: showBanner)
+                    }
+                    .foregroundStyle(LinearGradient(mycolors: .customOrange, .bottomBG, .topBG))
+                    .onAppear{
+                        moving.toggle()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            showBanner = true
                         }
-                    }
-                    .animation(.easeInOut, value: showBanner)
-                }
-                .foregroundStyle(LinearGradient(mycolors: .customOrange, .bottomBG, .topBG))
-                .onAppear{
-                    moving.toggle()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        showBanner = true
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-                        withAnimation(.easeInOut) {
-                            showHome = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                            withAnimation(.easeInOut) {
+                                showHome = true
+                            }
                         }
                     }
                 }

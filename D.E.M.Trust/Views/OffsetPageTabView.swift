@@ -82,7 +82,7 @@ struct OffsetPageTabView<Content: View>: UIViewRepresentable {
 
 struct OffsetPageTabView_Previews: PreviewProvider {
     static var previews: some View {
-        OnBoardingView()
+        OnBoardingView(showHome: .constant(false), showWalkthrough: .constant(true))
     }
 }
 

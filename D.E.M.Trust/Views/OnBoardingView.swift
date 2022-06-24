@@ -8,20 +8,22 @@
 import SwiftUI
 
 struct OnBoardingView: View {
+    @Binding var showHome: Bool
+    @Binding var showWalkthrough: Bool
     var body: some View {
         // getting geometry globally as opposed to inside WalkThroughView
         
         GeometryReader { geometry in
             let size = geometry.size
             
-            WalkThroughView(screenSize: size)
+            WalkThroughView(showHome: $showHome, showWalkthrough: $showWalkthrough, screenSize: size)
         }
     }
 }
 
 struct OnBoardingView_Previews: PreviewProvider {
     static var previews: some View {
-        OnBoardingView()
+        OnBoardingView(showHome: .constant(false), showWalkthrough: .constant(true))
             .preferredColorScheme(.dark)
     }
 }

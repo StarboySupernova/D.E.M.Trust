@@ -28,8 +28,8 @@ struct QAView: View {
                             .resizedToFit(width: 250, height: 250)
                         
                         Text("Well Done !")
-                            .foregroundColor(.black)
-                            .font(.title)
+                            .foregroundColor(.white)
+                            .font(.body)
                             .fontWeight(.heavy)
                         
                         HStack(spacing: 15) {
@@ -37,25 +37,26 @@ struct QAView: View {
                                 .font(.largeTitle)
                                 .foregroundColor(.green)
                             
-                            Text("\(correctAnswers / data.questions.count) %") //to be fixed - most likely .2f notation
+                            Text("100 %") //to be fixed - most likely .2f notation
                                 .font(.largeTitle)
                                 .foregroundColor(.black)
-                            
-                            Button {
-                                presentationMode.wrappedValue.dismiss()
-                                show = false
-                            } label: {
-                                Text("Back")
-                                    .font(.largeTitle)
-                                    .fontWeight(.heavy)
-                                    .foregroundColor(.white)
-                                    .padding(.vertical)
-                                    .frame(width: getRect().width - 150)
-                                    .background(Color.teal)
-                                    .cornerRadius(15)
-                            }
-
+                                .frame(maxWidth: .infinity)
                         }
+                        
+                        Button {
+                            presentationMode.wrappedValue.dismiss()
+                            show = false
+                        } label: {
+                            Text("Back")
+                                .font(.largeTitle)
+                                .fontWeight(.heavy)
+                                .foregroundColor(.white)
+                                .padding(.vertical)
+                                .frame(width: getRect().width - 150)
+                                .background(Color.red)
+                                .cornerRadius(15)
+                        }
+
                     }
                 } else {
                     VStack {

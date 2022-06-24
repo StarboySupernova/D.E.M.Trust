@@ -22,7 +22,7 @@ struct D_E_M_TrustApp: App {
     
     var body: some Scene {
         WindowGroup {
-            LaunchPoint()
+            HeroPageView()
              .modifier(DarkModeViewModifier())
              .environmentObject(modelData) 
         }

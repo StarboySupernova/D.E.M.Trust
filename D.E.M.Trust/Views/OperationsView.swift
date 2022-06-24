@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct OperationsView: View {
+    @State private var showGallery: Bool = false
+    @State private var showVideo: Bool = false
     //Animation properties
     @State private var expandCards: Bool = false
     
@@ -63,6 +65,15 @@ struct OperationsView: View {
                             } else {
                                 OperationCardView(card: card)
                                     .matchedGeometryEffect(id: card.id, in: animation)
+                                    .onTapGesture {
+                                        if card.name == "Gallery" {
+                                            showGallery = true
+                                        }
+                                        
+                                        if card.name == "Documentaries" {
+                                            showVideo = true
+                                        }
+                                    }
                             }
                         }
                         .onTapGesture {
@@ -97,6 +108,12 @@ struct OperationsView: View {
             if let currentCard = currentCard, showDetailCard {
                 OperationsDetailView(currentCard: currentCard, showDetail: $showDetailCard, animation: animation)
             }
+        }
+        .sheet(isPresented: $showVideo) {
+            VideoPlayerView(fullscreen: .constant(false))
+        }
+        .sheet(isPresented: $showGallery) {
+            GalleryView()
         }
     }
     

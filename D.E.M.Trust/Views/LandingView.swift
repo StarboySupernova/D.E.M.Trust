@@ -23,17 +23,33 @@ struct LandingView: View {
             //Views
             Home()
                 .tag("Home")
+            
             OperationsView()
                 .tag("Operations")
+            
             TrainingView()
                 .tag("Training")
-            VideoPlayerView(fullscreen: $fullscreen)
+            
+            /*
+             //removing videoplayerview from tab view to avoid the behaviour tab view adopts when it has more than five children
+             VideoPlayerView(fullscreen: $fullscreen)
                 .tag("Documentaries")
                 .onTapGesture {
                     fullscreen = true
                 }
+             */
+            
+            ConversationView()
+                .tag("Messaging")
+            
+            /*
+             //removing galleryview from tab view to avoid the behaviour tab view adopts when it has more than five children
             GalleryView()
-                .tag("Gallery")            
+                .tag("Gallery")
+             */
+            
+            AboutUs()
+                .tag("About Us")
         }
     }
 }
@@ -42,7 +58,7 @@ struct LandingView: View {
 struct LandingView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
-            .preferredColorScheme(.light)
+            .preferredColorScheme(.dark)
             .environmentObject(ModelData())
     }
 }

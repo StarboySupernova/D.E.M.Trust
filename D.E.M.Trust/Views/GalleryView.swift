@@ -50,7 +50,9 @@ struct GalleryView: View {
         .frame(maxHeight: .infinity)
         .frame(width: getRect().width)
         .background(
-            
+            RoundedRectangle(cornerRadius: 8)
+                .fill(Color("unicorn").opacity(0.5))
+                .ignoresSafeArea()
         )
         .onAppear {
             for index in 1...15 {

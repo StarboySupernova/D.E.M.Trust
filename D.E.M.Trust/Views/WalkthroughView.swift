@@ -9,6 +9,8 @@ import SwiftUI
 
 struct WalkThroughView: View {
     @State var offset: CGFloat = 0
+    @Binding var showHome: Bool
+    @Binding var showWalkthrough: Bool
     var screenSize: CGSize
     
     var body: some View {
@@ -24,6 +26,7 @@ struct WalkThroughView: View {
                 
                 Button {
                     //skip the walkthrough
+                    showWalkthrough = false
                 } label: {
                     Text("Skip")
                         .font(.caption)
@@ -40,10 +43,18 @@ struct WalkThroughView: View {
                 HStack(spacing: 0){
                     ForEach(intros) {intro in
                         VStack {
-                            Image(intro.image)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(height: screenSize.height / 3)
+                            if intro.image == "demtLogo" {
+                                Image(intro.image)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .clipShape(Ellipse())
+                            } else {
+                                Image(intro.image)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(height: screenSize.height / 3)
+                            }
+                            
                             
                             VStack(alignment: .leading, spacing: 20) {
                                 Text(intro.title)
@@ -86,6 +97,9 @@ struct WalkThroughView: View {
                     let index = min(getOffsetIndex() + 1, intros.count - 1)
                     offset = CGFloat(index) * screenSize.width
                     //should enable functionality for it to pivot to MainView() when the end of intros is reached, same functionality for skip button
+                    if getOffsetIndex() == (intros.count - 1) {
+                        showWalkthrough = false
+                    }
                 } label: {
                     Image(systemName: "chevron.right")
                         .font(.title2.bold())
@@ -117,7 +131,8 @@ struct WalkThroughView: View {
 
 struct WalkThroughView_Previews: PreviewProvider {
     static var previews: some View {
-        OnBoardingView()
+        OnBoardingView(showHome: .constant(false), showWalkthrough: .constant(true))
+            .environmentObject(ModelData())
             .preferredColorScheme(.dark)
     }
 }

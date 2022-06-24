@@ -88,12 +88,12 @@ struct AboutUs: View {
     
     var standView: some View {
         Rectangle()
-            .fill(.white.opacity(0.6))
-            .shadow(color: .black.opacity(0.85), radius: 20, x: 0, y: 5)
+            .fill(.black.opacity(0.6))
+            .shadow(color: .white.opacity(0.85), radius: 20, x: 0, y: 5)
             .frame(height: 10)
             .overlay(alignment: .top) {
                 Rectangle()
-                    .fill(LinearGradient(colors: [.white.opacity(0.75), .clear], startPoint: .top, endPoint: .bottom))
+                    .fill(LinearGradient(colors: [.black.opacity(0.75), .clear], startPoint: .top, endPoint: .bottom))
                     .frame(height: 385)
                     .rotation3DEffect(.init(degrees: -98), axis: (x: 1, y: 0, z: 0), anchor: .top, anchorZ: 0.5, perspective: 1)
                     .shadow(color: .black.opacity(0.08), radius: 25, x: 0, y: 5)

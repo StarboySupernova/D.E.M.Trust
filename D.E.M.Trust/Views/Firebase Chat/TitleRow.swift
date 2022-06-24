@@ -9,8 +9,7 @@ import SwiftUI
 
 struct TitleRow: View {
     var imageURL = URL(string: "") //will get this from Firebase
-    var name: String = "" //will get his from Firebase
-    
+    var name: String = "" //will get this from Firebase
     
     var body: some View {
         HStack(spacing: 20) {
@@ -24,12 +23,19 @@ struct TitleRow: View {
             
             VStack(alignment: .leading) {
                 Text(name)
-                    .font(.title2)
-                    .bold()
+                    .font(.title2.bold())
+                    .multilineTextAlignment(.leading)
+                    .foregroundColor(.customOrange)
                 
-                Text("Online")
+               /* Text(room.name)
                     .font(.caption)
+                    .multilineTextAlignment(.leading)
                     .foregroundColor(.offWhite)
+                
+                Text(room.description)
+                    .font(.caption2)
+                    .multilineTextAlignment(.leading)
+                    .foregroundColor(.white) */
             }
             .frame(maxWidth: .infinity, alignment: .center)
         }
@@ -39,6 +45,6 @@ struct TitleRow: View {
 
 struct TitleRow_Previews: PreviewProvider {
     static var previews: some View {
-        TitleRow()
+        ConversationView()
     }
 }

@@ -56,7 +56,7 @@ struct RichBackgroundView: View {
             }
             .padding(.top, -70)
             
-            ZStack{
+            ZStack {
                 Color("unicorn")
                 
                 ScrollView(.vertical, showsIndicators: false){

@@ -59,22 +59,24 @@ struct MainView: View {
                     //Animated drawer button
                     VStack(spacing: 5) {
                         Capsule()
-                            .fill(showMenu ? Color.white : Color.primary)
+                            .fill(showMenu ? Color.white : Color.green)
                             .frame(width: 30, height: 3)
                             .rotationEffect(.init(degrees: showMenu ? -49.9 : 0.01))
                             .offset(x: showMenu ? 2 : 0, y: showMenu ? 9 : 0)
                         VStack(spacing: 5) {
                             Capsule()
-                                .fill(showMenu ? Color.white : Color.primary)
+                                .fill(showMenu ? Color.white : Color.green)
                                 .frame(width: 30, height: 3)
                             //moving up when clicked
                             Capsule()
-                                .fill(showMenu ? Color.white : Color.primary)
+                                .fill(showMenu ? Color.white : Color.green)
                                 .frame(width: 30, height: 3)
                                 .offset(y: showMenu ? -8 : 0)
                         }
                         .rotationEffect(.init(degrees: showMenu ? 49.9 : 0.9))
                     }
+                    .shadow(color: .black.opacity(0.5), radius: 20, x: 0, y: 0)
+                    .glow(color: .black.opacity(0.5), radius: 2)
                 }
                     .padding() //useful to learn to detect which phones have a notch here
                 
@@ -87,6 +89,7 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
+            .preferredColorScheme(.dark)
             .environmentObject(ModelData())
     }
 }

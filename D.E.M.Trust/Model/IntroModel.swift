@@ -17,8 +17,10 @@ struct Intro: Identifiable {
 }
 
 var intros: [Intro] = [
-    Intro(image: "naturephone3", title: "Welcome to D.E.M.T.", description: "hgdutdo", color: .topBG), //title and desc will come from demt document
-    Intro(image: "flowers", title: "nvbsbh", description: "ncgygy", color: .brown),
-    Intro(image: "launch", title: "kljghd", description: "kabvd", color: .yellow),
-    Intro(image: "demtLogo", title: "dfgfjhg", description: "hdgfts", color: .teal)
+    Intro(image: "naturephone3", title: "Welcome to D.E.M.T.", description: "A local non-governmental development actor", color: .topBG), //title and desc will come from demt document
+    Intro(image: "flowers", title: "Non-profit", description: "providing relief and promoting recovery of disaster affected & vulnerable groups", color: .brown),
+    Intro(image: "launch", title: "Community-led", description: "empowering grassroots communities through development projects & partnering with others", color: .yellow),
+    Intro(image: "nature", title: "Environment-Conscious", description: "learn how to conserve your environment today", color: .teal),
+    Intro(image: "demtLogo", title: "Disaster and Environmental Management Trust", description: "", color: .green),
+    Intro(image: "demtLogo", title: "Disaster and Environmental Management Trust", description: "", color: .green),
 ]

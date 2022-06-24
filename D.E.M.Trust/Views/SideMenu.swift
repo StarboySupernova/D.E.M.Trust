@@ -10,11 +10,13 @@ import SwiftUI
 struct SideMenu: View {
     @Binding var selectedTab: String
     @Namespace var animation
+    @State private var showUserProfile: Bool = false
+    @State private var userName: String = "USERNAME"
     
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
             //profile picture
-            Image("profile")
+            Image("romeo")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 70, height: 70)
@@ -23,7 +25,7 @@ struct SideMenu: View {
                 .padding(.top, 50)
             
             VStack(alignment: .leading, spacing: 6) {
-                Text("Simba Dombodzvuku") //user name comes here
+                Text("Romeo Chingezi") //user name comes here
                     .font(.title)
                     .fontWeight(.heavy)
                     .foregroundColor(.white)
@@ -33,11 +35,18 @@ struct SideMenu: View {
                 
                 Button {
                     //use LandingView to present profile page to be created. UserDefaults to store user info
+                    showUserProfile = true
                 } label: {
                     Text("View Profile")
                         .fontWeight(.semibold)
                         .foregroundColor(.white)
                         .opacity(0.7)
+                }
+                .sheet(isPresented: $showUserProfile, content: {
+                    UserProfileView(showUserProfile: $showUserProfile, userName: $userName)
+                })
+                .onTapGesture {
+                    showUserProfile = true
                 }
             }
             
@@ -46,8 +55,13 @@ struct SideMenu: View {
                 TabButton(image: "house", title: "Home", selectedTab: $selectedTab, animation: animation)
                 TabButton(image: "globe.europe.africa.fill", title: "Operations", selectedTab: $selectedTab, animation: animation)
                 TabButton(image: "brain.head.profile", title: "Training", selectedTab: $selectedTab, animation: animation)
-                TabButton(image: "play.tv.fill", title: "Documentaries", selectedTab: $selectedTab, animation: animation)
-                TabButton(image: "camera.viewfinder", title: "Gallery", selectedTab: $selectedTab, animation: animation)
+                /*//removing videoplayerview from tab view to avoid the behaviour tab view adopts when it has more than five children
+                 TabButton(image: "play.tv.fill", title: "Documentaries", selectedTab: $selectedTab, animation: animation)
+                 */
+                TabButton(image: "paperplane.circle.fill", title: "Messaging", selectedTab: $selectedTab, animation: animation)
+                /*//removing galleryview from tab view to avoid the behaviour tab view adopts when it has more than five children
+                 TabButton(image: "camera.viewfinder", title: "Gallery", selectedTab: $selectedTab, animation: animation)
+                 */
                 TabButton(image: "person.3.fill", title: "About Us", selectedTab: $selectedTab, animation: animation)
                 
             }
