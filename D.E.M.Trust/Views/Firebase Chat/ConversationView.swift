@@ -9,31 +9,39 @@ import SwiftUI
 
 struct ConversationView: View {
     @StateObject var messagesManager = MessagesManager()
+    @State private var showContact: Bool = true
     var body: some View {
-        VStack {
+        ZStack {
             VStack {
-                TitleRow()
-                
-                ScrollViewReader { scroll in
-                    ScrollView {
-                        ForEach(messagesManager.messages) { message in
-                            MessageBubble(message: message)
+                VStack {
+                    TitleRow()
+                    
+                    ScrollViewReader { scroll in
+                        ScrollView {
+                            ForEach(messagesManager.messages) { message in
+                                MessageBubble(message: message)
+                            }
                         }
-                    }
-                    .padding(.top, 10)
-                    .background(Color("unicorn").opacity(0.7))
-                    .cornerRadius(30, corners: [.topLeft, .topRight])
-                    .onChange(of: messagesManager.lastMessageID) { id in
-                        withAnimation {
-                            scroll.scrollTo(id, anchor: .bottom)
+                        .padding(.top, 10)
+                        .background(Color("unicorn").opacity(0.7))
+                        .cornerRadius(30, corners: [.topLeft, .topRight])
+                        .onChange(of: messagesManager.lastMessageID) { id in
+                            withAnimation {
+                                scroll.scrollTo(id, anchor: .bottom)
+                            }
                         }
                     }
                 }
+                .background(LinearGradient(mycolors: .darkEnd, Color("unicorn")))
+                
+                MessageField()
+                    .environmentObject(messagesManager)
             }
-            .background(LinearGradient(mycolors: .darkEnd, Color("unicorn")))
+            .opacity(showContact ? 0.05 :  1)
             
-            MessageField()
-                .environmentObject(messagesManager)
+            if showContact {
+                ContactList(showContact: $showContact)
+            }
         }
     }
 }
