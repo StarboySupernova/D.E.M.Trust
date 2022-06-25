@@ -11,24 +11,30 @@ struct iPadLaunchPoint: View {
     var body: some View {
         TabView {
             //OnboardViews here. Navigation Path into main view to be built
+            ForEach(intros){ intro in
+                OnboardView(imageName: intro.image, title: intro.title, description: intro.description)
+                    .foregroundStyle(intro.color)
+            }
         }
         .tabViewStyle(.page(indexDisplayMode: .always))
-        .indexViewStyle(.page(backgroundDisplayMode: .always))    }
+        .indexViewStyle(.page(backgroundDisplayMode: .always))
+    }
 }
 
 struct iPadLaunchPoint_Previews: PreviewProvider {
     static var previews: some View {
         iPadLaunchPoint()
+            .preferredColorScheme(.dark)
     }
 }
 
 struct OnboardView: View{
-    let systemImageName: String
+    let imageName: String
     let title: String
     let description: String
     var body: some View {
         VStack (spacing: 20) { 
-            Image(systemName: systemImageName)
+            Image(imageName)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 100, height: 100)

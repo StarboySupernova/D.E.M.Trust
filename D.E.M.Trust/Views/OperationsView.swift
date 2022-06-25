@@ -24,7 +24,7 @@ struct OperationsView: View {
                 .font(.largeTitle)
                 .foregroundColor(.white)
                 .fontWeight(.ultraLight)
-                .frame(maxWidth: .infinity, alignment: expandCards ? .leading : .center)
+                .frame(maxWidth: .infinity, alignment: expandCards ? .center : .center)
                 .overlay (alignment: .trailing) {
                     Button {
                         withAnimation(.interactiveSpring(response: 0.8, dampingFraction: 0.7, blendDuration: 0.7)) {
@@ -39,7 +39,7 @@ struct OperationsView: View {
                     .offset(x: expandCards ? 10 : 15)
                     .opacity(expandCards ? 1 : 0)
                 }
-                .padding(.horizontal, 15)
+                .padding(.horizontal, 35)
                 .padding(.bottom, 10)
                 .background(
                     HStack {

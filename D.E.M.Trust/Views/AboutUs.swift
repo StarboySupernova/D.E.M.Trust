@@ -25,7 +25,7 @@ struct AboutUs: View {
                 .frame(maxWidth: .infinity)
                 .padding(.bottom, 20)
                 .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 25) {
                         withAnimation(.easeInOut.delay(1)) {
                             lineLimit = 1
                         }

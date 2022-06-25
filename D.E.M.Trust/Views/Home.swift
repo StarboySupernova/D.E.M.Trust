@@ -37,15 +37,15 @@ struct Home: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     
-                    Button {
+                    /*
+                     Button {
                         
                     } label: {
                         Image(systemName: "person.circle.fill")
                             .font(.largeTitle)
                             .foregroundColor(Color.topBG)
                     }
-                    
-                    
+                     */
                 }
                 .padding(.horizontal)
                 .padding(.bottom)
